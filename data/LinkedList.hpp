@@ -5,7 +5,11 @@
 #ifndef DATA_STRUCTURE_LINKEDLIST_HPP
 #define DATA_STRUCTURE_LINKEDLIST_HPP
 
-// 链表类
+#include <iostream>
+
+using namespace std;
+
+// 单链表类
 class LinkedList{
 public:
     // 链表节点类
@@ -21,8 +25,6 @@ public:
         }
     };
 private:
-    // 链表总大小
-    int size;
     // 链表当前长度
     int length;
     // 链表头节点指针
@@ -32,18 +34,20 @@ private:
 public:
     // 无参构造
     LinkedList();
-    // 初始化大小的构造
-    explicit LinkedList(int size);
     // 析构函数
     ~LinkedList();
     // 头部插入
     bool InsertElemAtFront(int elemVal);
     // 尾部插入
     bool InsertElemAtBack(int elemVal);
+    // 尾部插入
+    bool InsertElemAtBack(ListNode *elem);
     // 查找节点
     ListNode* FindElem(int elemVal);
     // 删除指定节点
     bool DeleteElem(ListNode *elem);
+    // 删除链表倒数第 n 个结点
+    bool DeleteElem(int n);
     // 弹出末尾节点
     int DeleteLastElem();
     // 如果字符串是通过单链表来存储的，那该如何来判断是一个回文串呢？
@@ -52,13 +56,13 @@ public:
     void PrintList();
     // 测试
     static void Test();
+    // 反转单向链表
+    static ListNode * FlipLinkedList(ListNode *elem);
+    // 链表中环的检测
+    static bool CheckCircle(ListNode *elem);
 };
 
-// 无参构造函数调用有参构造函数
-LinkedList::LinkedList() : LinkedList(10) {}
-
-LinkedList::LinkedList(int size) {
-    this->size = size;
+LinkedList::LinkedList() {
     this->length = 0;
     this->head = new ListNode();
 }
@@ -90,9 +94,13 @@ bool LinkedList::InsertElemAtFront(int elemVal){
 bool LinkedList::InsertElemAtBack(int elemVal) {
     // 新建节点
     auto *node = new ListNode(elemVal);
+    return InsertElemAtBack(node);
+}
+
+bool LinkedList::InsertElemAtBack(ListNode *elem) {
     // 声明末节点, 并找到真正的它
     ListNode *end = FindLastElem();
-    end->next = node;
+    end->next = elem;
     this->length++;
     return true;
 }
@@ -153,8 +161,29 @@ bool LinkedList::DeleteElem(ListNode *elem){
     return true;
 }
 
+bool LinkedList::DeleteElem(int n) {
+    ListNode *fast, *slow;
+    fast = slow = this->head;
+    while (fast->next != nullptr){
+        fast = fast->next;
+        slow = slow->next;
+        while (n-- > 0){
+            if(fast->next != nullptr){
+                fast = fast->next;
+            }else{
+                return false;
+            }
+        }
+    }
+    if(slow->next != nullptr){
+        slow->next = slow->next->next;
+        length--;
+    }
+    return true;
+}
+
 /**
- * 不额外占用空间，但会会更改链表结构
+ * 不额外占用空间
  * @return
  */
 bool LinkedList::CheckPalindromeList() {
@@ -176,12 +205,37 @@ bool LinkedList::CheckPalindromeList() {
         return false;
     }
 
-    // 从中间开始
-    ListNode *start = mid;
+    // 反转 mid 与其之后的链表
+    ListNode *start = FlipLinkedList(mid);
 
+    ListNode *node = this->head->next;
+    ListNode *startNode = start;
+    bool palindrome = true;
+
+    while (node != nullptr && startNode != nullptr ){
+        if(node->val != startNode->val){
+            palindrome = false;
+            break;
+        }
+        node = node->next;
+        startNode = startNode->next;
+    }
+    // 是否回文
+    printf("Is palindrome ? %d \n", palindrome);
+
+    // 反转 start 与其之后的链表
+    // 用于还原
+    FlipLinkedList(start);
+
+    return palindrome;
+
+}
+
+LinkedList::ListNode * LinkedList::FlipLinkedList(ListNode *elem) {
+    // 开始
+    ListNode *start = elem;
     // 前一个节点
     ListNode *prev1 = nullptr;
-
     // 前二个节点
     ListNode *prev2 = nullptr;
 
@@ -196,34 +250,39 @@ bool LinkedList::CheckPalindromeList() {
             break;
         }
     }
+    return start;
+}
 
-    ListNode *node = this->head->next;
-    ListNode *startNode = start;
-    bool palindrome = true;
-
-    while (node->next != nullptr){
-        if(node->val != startNode->val){
-            palindrome = false;
+bool LinkedList::CheckCircle(ListNode *elem) {
+    bool flog = false;
+    ListNode *fast, *slow;
+    fast = slow = elem;
+    while (fast->next != nullptr){
+        fast = fast->next;
+        slow = slow->next;
+        if(fast->next != nullptr){
+            fast = fast->next;
+        }
+        if(fast == slow){
+            flog = true;
             break;
         }
-        node = node->next;
-        startNode = start->next;
     }
-    printf("是否是回文链表 %d \n", palindrome);
-    return palindrome;
-
+    printf("Is circle ? %d \n", flog);
+    return flog;
 }
 
 void LinkedList::Test(){
     auto linkedList = new LinkedList();
     linkedList->PrintList();
     linkedList->InsertElemAtBack(1);
+    linkedList->CheckPalindromeList();
     linkedList->InsertElemAtBack(2);
     linkedList->CheckPalindromeList();
-
     linkedList->InsertElemAtBack(1);
+    linkedList->CheckPalindromeList();
     linkedList->InsertElemAtBack(4);
-
+    linkedList->CheckPalindromeList();
     linkedList->InsertElemAtBack(5);
     linkedList->PrintList();
     linkedList->InsertElemAtFront(0);
@@ -247,7 +306,18 @@ void LinkedList::Test(){
     linkedList->InsertElemAtFront(1);
     linkedList->PrintList();
     linkedList->CheckPalindromeList();
+    linkedList->PrintList();
 
+    linkedList->DeleteElem(3);
+    linkedList->PrintList();
+
+    // 手动成环
+    auto *first = linkedList->FindElem(1);
+    auto *node2 = new ListNode(9);
+    node2->next = first;
+    LinkedList::CheckCircle(first);
+    linkedList->InsertElemAtBack(node2);
+    LinkedList::CheckCircle(first);
 
 }
 

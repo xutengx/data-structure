@@ -1,5 +1,5 @@
 #include "05_array/array.h"
-#include "06_linkedlist/LinkedList.hpp"
+#include "data/LinkedList.hpp"
 
 int main() {
    // arrayMain();

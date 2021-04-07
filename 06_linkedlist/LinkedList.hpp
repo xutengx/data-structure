@@ -153,7 +153,13 @@ bool LinkedList::DeleteElem(ListNode *elem){
     return true;
 }
 
+/**
+ * 不额外占用空间，但会会更改链表结构
+ * @return
+ */
 bool LinkedList::CheckPalindromeList() {
+    PrintList();
+
     // 找到链表中点
     ListNode *fast, *slow, *mid;
     slow = fast = this->head;
@@ -170,17 +176,41 @@ bool LinkedList::CheckPalindromeList() {
         return false;
     }
 
+    // 从中间开始
     ListNode *start = mid;
-    ListNode *prev = nullptr;
-    ListNode *temp = start;
+
+    // 前一个节点
+    ListNode *prev1 = nullptr;
+
+    // 前二个节点
+    ListNode *prev2 = nullptr;
+
     while (start->next != nullptr){
-        prev = start;
-        temp->next = prev;
-        start = start->next;
-        temp = prev;
+        prev2 = prev1;
+        prev1 = start;
+        start = start->next; // 后移
+        prev1->next = prev2;
+        // 没更多节点了
+        if(start->next == nullptr){
+            start->next = prev1;
+            break;
+        }
     }
 
-    return false;
+    ListNode *node = this->head->next;
+    ListNode *startNode = start;
+    bool palindrome = true;
+
+    while (node->next != nullptr){
+        if(node->val != startNode->val){
+            palindrome = false;
+            break;
+        }
+        node = node->next;
+        startNode = start->next;
+    }
+    printf("是否是回文链表 %d \n", palindrome);
+    return palindrome;
 
 }
 
@@ -189,8 +219,11 @@ void LinkedList::Test(){
     linkedList->PrintList();
     linkedList->InsertElemAtBack(1);
     linkedList->InsertElemAtBack(2);
-    linkedList->InsertElemAtBack(3);
+    linkedList->CheckPalindromeList();
+
+    linkedList->InsertElemAtBack(1);
     linkedList->InsertElemAtBack(4);
+
     linkedList->InsertElemAtBack(5);
     linkedList->PrintList();
     linkedList->InsertElemAtFront(0);
@@ -209,8 +242,8 @@ void LinkedList::Test(){
     linkedList->PrintList();
     linkedList->InsertElemAtBack(2);
     linkedList->InsertElemAtBack(3);
-    linkedList->InsertElemAtBack(4);
-    linkedList->InsertElemAtBack(5);
+    linkedList->InsertElemAtBack(2);
+    linkedList->InsertElemAtBack(1);
     linkedList->InsertElemAtFront(1);
     linkedList->PrintList();
     linkedList->CheckPalindromeList();

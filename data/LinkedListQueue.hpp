@@ -6,8 +6,13 @@
 #define DATA_STRUCTURE_LINKEDLISTQUEUE_HPP
 
 
+template<class T>
 class LinkedListQueue {
-
+private:
+    struct Node{
+        T val;
+        Node *next;
+    };
 };
 
 

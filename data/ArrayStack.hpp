@@ -13,7 +13,7 @@ using namespace std;
  * 3）采用数组的栈，支持动态扩容，每次扩容1.5 倍，初始栈的大小是 10
  */
 
-template<class T> class ArrayStack<T> {
+template<class T> class ArrayStack {
 private:
     int flag;
     int size;
@@ -58,12 +58,13 @@ template<class T> ArrayStack<T>::~ArrayStack<T>() {
 template<class T> bool ArrayStack<T>::push(T data) {
     expansionSize();
     arr[flag++] = data;
+    return true;
 }
 
 template<class T> T ArrayStack<T>::pop() {
     return arr[flag--];
 }
-template<class T> T ArrayStack<T>::peek() {}() {
+template<class T> T ArrayStack<T>::peek() {
     return arr[flag];
 }
 template<class T> int ArrayStack<T>::stackSize() {
@@ -88,7 +89,7 @@ template<class T> int ArrayStack<T>::expansionSize() {
     return size;
 }
 
-template<class T> void ArrayStack<T>::test() {
+template<class T>  void ArrayStack<T>::test() {
 
 }
 

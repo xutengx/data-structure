@@ -85,7 +85,7 @@ bool ArrayQueue<T>::push(T dataParameter) {
 template<class T>
 T ArrayQueue<T>::pop() {
     if(count == 0)
-        return NULL;
+        return {};
     T t = data[front++];
     count--;
     cout << "pop : " << t << "\n";
@@ -130,7 +130,7 @@ void ArrayQueue<T>::transfer() {
     if(back == maxSize - 1){
         cout << "transfer \n";
         int i = 0;
-        while (i < maxSize){
+        while (i < maxSize && front < maxSize){
             *(data + i++) = data[front++];
         }
         front = 0;
@@ -140,23 +140,25 @@ void ArrayQueue<T>::transfer() {
 
 template<class T>
 void ArrayQueue<T>::dump() {
-    printf("maxSize【%d】,count【%d】,front【%d】,back【%d】,data【", maxSize, count, front, back);
+    printf("dump maxSize[%d],count[%d],front[%d],back[%d],data[", maxSize, count, front, back);
     int temp = front;
     while (temp <= back){
         T t = data[temp++];
         cout << t;
     }
-    printf("】");
-    cout << "， array【";
+    printf("]");
+    cout << ", array[";
     int i = 0;
     while (i < maxSize){
         cout << data[i++];
     }
-    cout << "】\n";
+    cout << "]\n";
 }
 
 template<class T>
 void ArrayQueue<T>::test() {
+    cout << "ArrayQueue test start ! \n";
+
     auto *pQueue = new ArrayQueue<int>(6);
     pQueue->push(0);
     pQueue->push(1);
@@ -187,7 +189,9 @@ void ArrayQueue<T>::test() {
     pQueue->dump();
 
     pQueue->push(9);
+    pQueue->dump();
     pQueue->push(8);
+    pQueue->dump();
     pQueue->push(7);
     pQueue->dump();
 }

@@ -3,6 +3,7 @@
 #include "data/ArrayStack.hpp"
 #include "data/LinkedListStack.hpp"
 #include "data/ArrayQueue.hpp"
+#include "data/LinkedListQueue.hpp"
 
 int main() {
    // arrayMain();

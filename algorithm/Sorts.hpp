@@ -48,7 +48,7 @@ public:
     static void merge(T *arr, int size);
 
     /**
-     * 快速排序 ()
+     * 快速排序 (不稳定排序 空间O(1) 时间O(nlog(n))
      * 如果要排序数组中下标从 p 到 r 之间的一组数据，我们选择 p 到 r 之间的任意一个数据作为 pivot（分区点）。
      * 我们遍历 p 到 r 之间的数据，将小于 pivot 的放到左边，将大于 pivot 的放到右边，将 pivot 放到中间。
      * 经过这一步骤之后，数组 p 到 r 之间的数据就被分成了三个部分，前面 p 到 q-1 之间都是小于 pivot 的，中间是 pivot，后面的 q+1 到 r 之间是大于 pivot 的。
@@ -57,6 +57,15 @@ public:
      * @param size
      */
     static void quick(T *arr, int size);
+
+    /**
+     * 桶排序
+     * 核心思想是将要排序的数据分到几个有序的桶里，每个桶里的数据再单独进行排序。
+     * 桶内排完序之后，再把每个桶里的数据按照顺序依次取出，组成的序列就是有序的了。
+     * @param arr
+     * @param size
+     */
+    static void bucket(T *arr, int size);
 
     static void test();
 

@@ -5,6 +5,9 @@
 #ifndef DATA_STRUCTURE_SORTS_HPP
 #define DATA_STRUCTURE_SORTS_HPP
 
+#include<random>
+#include <ctime>
+default_random_engine random(time(NULL));
 
 template<class T>
 class Sorts {
@@ -59,17 +62,31 @@ public:
     static void quick(T *arr, int size);
 
     /**
-     * 桶排序
+     * 桶排序 (不稳定排序 空间?   时间O(n))
      * 核心思想是将要排序的数据分到几个有序的桶里，每个桶里的数据再单独进行排序。
      * 桶内排完序之后，再把每个桶里的数据按照顺序依次取出，组成的序列就是有序的了。
      * @param arr
      * @param size
+     * @param bucketSize
      */
-    static void bucket(T *arr, int size);
+    static void bucket(T *arr, int size, int bucketSize = 4);
+
+    /**
+     * 计数排序
+     * 计数排序其实是桶排序的一种特殊情况。
+     * 当要排序的 n 个数据，所处的范围并不大的时候，比如最大值是 k，我们就可以把数据划分成 k 个桶。
+     * 每个桶内的数据值都是相同的，省掉了桶内排序的时间。
+     * @param arr
+     * @param size
+     */
+    static void counting(T *arr, int size);
 
     static void test();
 
 private:
+    // 打乱
+    static void upset(T *arr, int size);
+
     // 交换
     static void swap(T *a, T *b);
 
@@ -161,10 +178,10 @@ void Sorts<T>::merge(T *arr, int size) {
             arr[k++] = two[m++];
         }
     }
-    for (; n < oneSize; n++) {
+    for (;n < oneSize;) {
         arr[k++] = one[n++];
     }
-    for (; m < twoSize; m++) {
+    for (; m < twoSize;) {
         arr[k++] = two[m++];
     }
 }
@@ -190,7 +207,7 @@ void Sorts<T>::quick(T *arr, int size) {
             }
             smallSize++;
         } else if (arr[i] == pivotValue) {
-            smallSize++;
+            bigSize++;
         } else {
             bigSize++;
         }
@@ -200,6 +217,90 @@ void Sorts<T>::quick(T *arr, int size) {
     quick(arr, smallSize);
     quick(&arr[smallSize + 1], bigSize);
 }
+
+template<class T>
+void Sorts<T>::bucket(T *arr, int size, const int bucketSize) {
+    // 1. 划分桶
+    // 1.1 找出最大最小值
+    T minValue = arr[0];
+    T maxValue = arr[0];
+    for (int i = 0; i < size; i++) {
+        if (arr[i] < minValue) {
+            minValue = arr[i];
+        } else if (arr[i] > maxValue) {
+            maxValue = arr[i];
+        }
+    }
+    // 1.2 确定桶数量
+    int bucketCount = (maxValue - minValue) / bucketSize + 1;
+    // 1.3 创建桶
+    // c的第二维不知道大小很麻烦, 这里需要记下
+    struct Bucket{
+        T* data;
+        int count = 0;
+        int size;
+        explicit Bucket(int theSize){
+            data = new T[theSize];
+            size = theSize;
+        }
+        ~Bucket(){
+            delete [] data;
+        }
+    };
+    // 没有"无参构造"的对象数组
+    // 申请缓冲器
+    void *pVoid = operator new(bucketCount * sizeof(Bucket));
+    // 类型转化
+    auto *buckets = static_cast<Bucket *>(pVoid);
+    // 对象构建
+    for (int i = 0; i < bucketCount; i++) {
+        new(buckets + i) Bucket(bucketSize);
+    }
+
+    // 2. 数据入桶
+    for (int i = 0; i < size; i++) {
+        // 2.1 找出对应的桶
+        int bucketIdx = (int)(arr[i] - minValue) / bucketSize;
+        Bucket &bucketTemp = buckets[bucketIdx];
+
+        // 需要扩容
+        if(bucketTemp.count == bucketTemp.size){
+            int newSize = (int) (bucketTemp.size * 1.5);
+            T *pT = new T[newSize];
+            // 迁移
+            for(int j = 0; j < bucketTemp.size; j++){
+                pT[j] = bucketTemp.data[j];
+            }
+            // 回收
+            delete [] bucketTemp.data;
+            // 赋值
+            bucketTemp.data = pT;
+            bucketTemp.size = newSize;
+        }
+        bucketTemp.data[bucketTemp.count++] = arr[i];
+    }
+    
+    // 3.对每个同进行快速排序
+    for(int i = 0 ; i < bucketCount; i ++){
+        Bucket &bucketTemp = buckets[i];
+        quick(bucketTemp.data, bucketTemp.count);
+    }
+
+    // 4.按顺序合并每个桶
+    int n = 0;
+    for(int i = 0 ; i < bucketCount; i ++){
+        Bucket &bucketTemp = buckets[i];
+        for(int j= 0; j< bucketTemp.count ; j++){
+            arr[n++] = bucketTemp.data[j];
+        }
+    }
+}
+
+template<class T>
+void Sorts<T>::counting(T *arr, int size) {
+
+}
+
 
 template<class T>
 void Sorts<T>::swap(T *a, T *b) {
@@ -220,35 +321,51 @@ void Sorts<T>::dump(T *arr, int size) {
 }
 
 template<class T>
+void Sorts<T>::upset(T *arr, int size) {
+    uniform_int_distribution<int> dis1(0, size - 1);
+    int i = 0;
+    while (i < size){
+        swap(&arr[dis1(random)], &arr[dis1(random)]);
+        i ++;
+    }
+    dump(arr, size);
+}
+
+template<class T>
 void Sorts<T>::test() {
-    int a1[7] = {9, 2, 1, 4, 5, 0, 9};
-    dump(a1, 7);
-    bubble(a1, 7);
-    dump(a1, 7);
+    const int size = 22;
+    int array[size] = {9, 2, 1, 4, 5, 0, 9, 2, 1, 4, 5, 0, 9, 2, 1, 4, 5, 0, 9, 1, 3, 6};
+    upset(array, size);
+    cout << "bubble :";
+    bubble(array, size);
+    dump(array, size);
 
+    upset(array, size);
+    cout << "insert :";
+    insert(array, size);
+    dump(array, size);
 
-    int a2[7] = {9, 2, 1, 4, 5, 0, 9};
-    dump(a2, 7);
-    insert(a2, 7);
-    dump(a2, 7);
+    upset(array, size);
+    cout << "select :";
+    select(array, size);
+    dump(array, size);
 
-    int a3[7] = {9, 2, 1, 4, 5, 0, 9};
-    dump(a3, 7);
-    select(a3, 7);
-    dump(a3, 7);
+    upset(array, size);
+    cout << "merge :";
+    merge(array, size);
+    dump(array, size);
 
-    int a4[7] = {9, 2, 1, 4, 5, 0, 9};
-    dump(a4, 7);
-    merge(a4, 7);
-    dump(a4, 7);
+    upset(array, size);
+    cout << "quick :";
+    quick(array, size);
+    dump(array, size);
 
-    int a5[7] = {9, 2, 1, 4, 5, 0, 9};
-    dump(a5, 7);
-    quick(a5, 7);
-    dump(a5, 7);
+    upset(array, size);
+    cout << "bucket :";
+    bucket(array, size);
+    dump(array, size);
 
     cout << "finish !" << endl;
 }
-
 
 #endif //DATA_STRUCTURE_SORTS_HPP

@@ -7,7 +7,6 @@
 
 #include<random>
 #include <ctime>
-default_random_engine random(time(NULL));
 
 template<class T>
 class Sorts {
@@ -79,7 +78,16 @@ public:
      * @param arr
      * @param size
      */
-    static void counting(T *arr, int size);
+    static void counting(int *arr, int size);
+
+    /**
+     * 基数排序
+     * 假设我们有 10 万个手机号码，希望将这 10 万个手机号码从小到大排序，你有什么比较快速的排序方法呢？
+     * 先按照最后一位来排序手机号码，然后，再按照倒数第二位重新排序，以此类推，最后按照第一位重新排序。经过 11 次排序之后，手机号码就都有序了。
+     * @param arr
+     * @param size
+     */
+    static void radix(int *arr, int size);
 
     static void test();
 
@@ -178,7 +186,7 @@ void Sorts<T>::merge(T *arr, int size) {
             arr[k++] = two[m++];
         }
     }
-    for (;n < oneSize;) {
+    for (; n < oneSize;) {
         arr[k++] = one[n++];
     }
     for (; m < twoSize;) {
@@ -235,16 +243,18 @@ void Sorts<T>::bucket(T *arr, int size, const int bucketSize) {
     int bucketCount = (maxValue - minValue) / bucketSize + 1;
     // 1.3 创建桶
     // c的第二维不知道大小很麻烦, 这里需要记下
-    struct Bucket{
-        T* data;
+    struct Bucket {
+        T *data;
         int count = 0;
         int size;
-        explicit Bucket(int theSize){
+
+        explicit Bucket(int theSize) {
             data = new T[theSize];
             size = theSize;
         }
-        ~Bucket(){
-            delete [] data;
+
+        ~Bucket() {
+            delete[] data;
         }
     };
     // 没有"无参构造"的对象数组
@@ -260,47 +270,107 @@ void Sorts<T>::bucket(T *arr, int size, const int bucketSize) {
     // 2. 数据入桶
     for (int i = 0; i < size; i++) {
         // 2.1 找出对应的桶
-        int bucketIdx = (int)(arr[i] - minValue) / bucketSize;
+        int bucketIdx = (int) (arr[i] - minValue) / bucketSize;
         Bucket &bucketTemp = buckets[bucketIdx];
 
         // 需要扩容
-        if(bucketTemp.count == bucketTemp.size){
+        if (bucketTemp.count == bucketTemp.size) {
             int newSize = (int) (bucketTemp.size * 1.5);
             T *pT = new T[newSize];
             // 迁移
-            for(int j = 0; j < bucketTemp.size; j++){
+            for (int j = 0; j < bucketTemp.size; j++) {
                 pT[j] = bucketTemp.data[j];
             }
             // 回收
-            delete [] bucketTemp.data;
+            delete[] bucketTemp.data;
             // 赋值
             bucketTemp.data = pT;
             bucketTemp.size = newSize;
         }
         bucketTemp.data[bucketTemp.count++] = arr[i];
     }
-    
+
     // 3.对每个同进行快速排序
-    for(int i = 0 ; i < bucketCount; i ++){
+    for (int i = 0; i < bucketCount; i++) {
         Bucket &bucketTemp = buckets[i];
         quick(bucketTemp.data, bucketTemp.count);
     }
 
     // 4.按顺序合并每个桶
     int n = 0;
-    for(int i = 0 ; i < bucketCount; i ++){
+    for (int i = 0; i < bucketCount; i++) {
         Bucket &bucketTemp = buckets[i];
-        for(int j= 0; j< bucketTemp.count ; j++){
+        for (int j = 0; j < bucketTemp.count; j++) {
             arr[n++] = bucketTemp.data[j];
         }
     }
 }
 
 template<class T>
-void Sorts<T>::counting(T *arr, int size) {
+void Sorts<T>::counting(int *arr, int size) {
+    // 1. 划分桶
+    // 1.1 找出最大最小值
+    int minValue = arr[0];
+    int maxValue = arr[0];
+    for (int i = 0; i < size; i++) {
+        if (arr[i] < minValue) {
+            minValue = arr[i];
+        } else if (arr[i] > maxValue) {
+            maxValue = arr[i];
+        }
+    }
+    // 1.2 确定桶数量
+    int bucketSize = maxValue - minValue + 1;
+    // 1.3 创建桶
+    int *buckets = new int[bucketSize];
 
+    // 2. 数据入桶
+    for (int i = 0; i < size; i++) {
+        buckets[arr[i] - minValue]++;
+    }
+//    cout << "ssssss -----";
+//    dump(buckets, bucketSize);
+
+    // 3.按顺序合并每个桶
+    int n = 0;
+    for (int i = 0; i < bucketSize; i++) {
+        while (buckets[i]-- > 0) {
+            arr[n++] = i + minValue;
+        }
+    }
 }
 
+template<class T>
+void Sorts<T>::radix(int *arr, int size) {
+    // 1. 确认最大位数
+    int maxDigit = 0;
+    for (int i = 0; i < size; i++) {
+        int length = 0;
+        int temp = arr[i];
+        while (temp) {
+            temp /= 10;
+            length++;
+        }
+        if (length > maxDigit) {
+            maxDigit = length;
+        }
+    }
+
+    // 2. 定义按位数排序的函数
+    auto digitSort = [](int *arr, int size, int digit) {
+        // 桶数量
+        int bucketSize = 10;
+
+
+
+    };
+
+    // 2.
+    for (int i = 0; i < maxDigit; i++) {
+
+    }
+
+}
 
 template<class T>
 void Sorts<T>::swap(T *a, T *b) {
@@ -322,11 +392,15 @@ void Sorts<T>::dump(T *arr, int size) {
 
 template<class T>
 void Sorts<T>::upset(T *arr, int size) {
+    random_device sd;//生成random_device对象sd做种子
+    minstd_rand random(
+            sd());//使用种子初始化linear_congruential_engine对象，为的是使用它来做我们下面随机分布的种子以输出多个随机分布.注意这里要使用()操作符，因为minst_rand()接受的是一个值（你用srand也是给出这样的一个值）
     uniform_int_distribution<int> dis1(0, size - 1);
+
     int i = 0;
-    while (i < size){
+    while (i < size) {
         swap(&arr[dis1(random)], &arr[dis1(random)]);
-        i ++;
+        i++;
     }
     dump(arr, size);
 }
@@ -363,6 +437,11 @@ void Sorts<T>::test() {
     upset(array, size);
     cout << "bucket :";
     bucket(array, size);
+    dump(array, size);
+
+    upset(array, size);
+    cout << "counting :";
+    counting(array, size);
     dump(array, size);
 
     cout << "finish !" << endl;

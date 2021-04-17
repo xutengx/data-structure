@@ -61,7 +61,7 @@ public:
     static void quick(T *arr, int size);
 
     /**
-     * 桶排序 (不稳定排序 空间?   时间O(n))
+     * 桶排序 (稳定排序 空间(非原地) 时间O(n))
      * 核心思想是将要排序的数据分到几个有序的桶里，每个桶里的数据再单独进行排序。
      * 桶内排完序之后，再把每个桶里的数据按照顺序依次取出，组成的序列就是有序的了。
      * @param arr
@@ -71,7 +71,7 @@ public:
     static void bucket(T *arr, int size, int bucketSize = 4);
 
     /**
-     * 计数排序
+     * 计数排序 (稳定排序 空间(非原地) 时间O(n+k)k是数据范围)
      * 计数排序其实是桶排序的一种特殊情况。
      * 当要排序的 n 个数据，所处的范围并不大的时候，比如最大值是 k，我们就可以把数据划分成 k 个桶。
      * 每个桶内的数据值都是相同的，省掉了桶内排序的时间。
@@ -81,7 +81,7 @@ public:
     static void counting(int *arr, int size);
 
     /**
-     * 基数排序
+     * 基数排序 (稳定排序 空间(非原地) 时间O(dn)d是维度)
      * 假设我们有 10 万个手机号码，希望将这 10 万个手机号码从小到大排序，你有什么比较快速的排序方法呢？
      * 先按照最后一位来排序手机号码，然后，再按照倒数第二位重新排序，以此类推，最后按照第一位重新排序。经过 11 次排序之后，手机号码就都有序了。
      * @param arr
@@ -323,6 +323,10 @@ void Sorts<T>::counting(int *arr, int size) {
     int bucketSize = maxValue - minValue + 1;
     // 1.3 创建桶
     int *buckets = new int[bucketSize];
+    // 1.4 初始化桶
+    for (int i = 0; i < bucketSize; i++) {
+        buckets[i] = 0;
+    }
 
     // 2. 数据入桶
     for (int i = 0; i < size; i++) {
@@ -358,18 +362,43 @@ void Sorts<T>::radix(int *arr, int size) {
 
     // 2. 定义按位数排序的函数
     auto digitSort = [](int *arr, int size, int digit) {
+        int d = (int) pow(10, digit - 1);
         // 桶数量
         int bucketSize = 10;
+        // 新建桶
+        int *buckets = new int[bucketSize];
+        // 初始化桶
+        for (int i = 0; i < bucketSize; i++) {
+            buckets[bucketSize] = 0;
+        }
 
+        // 计算每个元素(0 - 9)的个数
+        for (int i = 0; i < size; i++) {
+            int idx = (arr[i] / d) % 10;
+            buckets[idx]++;
+        }
+        // 计算每个元素(0 - 9)的位置
+        for (int i = 1; i < bucketSize; i++) {
+            buckets[i] += buckets[i - 1];
+        }
 
+//        cout << "fffffffffff ";
+//        dump(buckets, bucketSize);
 
+        // 排序
+        int *temp = new int[size];
+        for (int i = 0; i < size; i++) {
+            int idx = (arr[i] / d) % 10;
+            temp[--buckets[idx]] = arr[i];
+        }
+        // 赋值
+        memcpy(arr, temp, sizeof(int) * size);
     };
 
-    // 2.
-    for (int i = 0; i < maxDigit; i++) {
-
+    // 3. 按位依次调用
+    for (int i = 1; i <= maxDigit; i++) {
+        digitSort(arr, size, i);
     }
-
 }
 
 template<class T>
@@ -384,7 +413,7 @@ void Sorts<T>::dump(T *arr, int size) {
     int i = 0;
     cout << "dump data [";
     while (i < size) {
-        cout << *(arr + i);
+        cout << *(arr + i) << " ";
         i++;
     }
     cout << "] \n";
@@ -442,6 +471,11 @@ void Sorts<T>::test() {
     upset(array, size);
     cout << "counting :";
     counting(array, size);
+    dump(array, size);
+
+    upset(array, size);
+    cout << "radix :";
+    radix(array, size);
     dump(array, size);
 
     cout << "finish !" << endl;

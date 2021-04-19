@@ -42,6 +42,7 @@ private:
         // 也正因为如此, skiplist的每个节点所包含的指针数目才是不固定的, 我们前面分析过的结论——skiplist每个节点包含的指针数目平均为1/(1-p)——才能有意义
     };
 
+
     // zskiplist定义了真正的skiplist结构
     struct zskiplist {
         // 头指针header和尾指针tail

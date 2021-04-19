@@ -4,6 +4,7 @@
 #include "data/LinkedListStack.hpp"
 #include "data/ArrayQueue.hpp"
 #include "data/LinkedListQueue.hpp"
+#include "data/SortedSet.hpp"
 #include "algorithm/Sorts.hpp"
 #include "algorithm/Search.hpp"
 

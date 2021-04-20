@@ -16,6 +16,7 @@ int main() {
 //    ArrayQueue<int>::test();
 //    LinkedListQueue<int>::test();
 //    Sorts<int>::test();
-    Search::test();
+//    Search::test();
+    SortedSet::test();
     return 0;
 }

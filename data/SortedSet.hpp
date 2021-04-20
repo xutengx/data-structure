@@ -5,8 +5,11 @@
 #ifndef DATA_STRUCTURE_SORTEDSET_HPP
 #define DATA_STRUCTURE_SORTEDSET_HPP
 
-#include<random>
+#include <random>
 #include <ctime>
+#include <cassert>
+#include "vector"
+
 // 最大深度
 #define ZSKIPLIST_MAXLEVEL 32
 // 随机层数的系数, 越小出现高层的概率越低, 内存占用越小
@@ -33,13 +36,20 @@ private:
 
         struct zskiplistLevel {
             // 指向各层链表下一个节点的指针(next指针).
-            struct zskiplistNode *forward;
+            struct zskiplistNode *forward = nullptr;
             // 每个next指针还对应了一个span值, 它表示当前的指针跨越了多少个节点.
             // span用于计算元素排名(rank),这正是前面我们提到的Redis对于skiplist所做的一个扩展
-            unsigned int span;
-        } level[];
+            unsigned int span = 0;
+        } ;
         // maxLevel[]是一个柔性数组, 因此它占用的内存不在zskiplistNode结构里面, 而需要插入节点的时候单独为它分配.
         // 也正因为如此, skiplist的每个节点所包含的指针数目才是不固定的, 我们前面分析过的结论——skiplist每个节点包含的指针数目平均为1/(1-p)——才能有意义
+        // 柔性数组比较麻烦,在此使用 vector
+        vector<zskiplistLevel*> level;
+
+        zskiplistNode(){
+            level.push_back(new zskiplistLevel);
+        }
+
     };
 
 
@@ -87,6 +97,8 @@ public:
         //  todo
     }
 
+    static void test();
+
     /**
      * 根据score查找集合中的前一个节点
      * @param obj
@@ -95,12 +107,17 @@ public:
     zskiplistNode *findBefore(double score) const {
         // 头节点开始寻找
         zskiplistNode *pNode = skipList.header;
+
         // 从最高层开始寻找
         for (int cLevel = skipList.maxLevel - 1; cLevel >= 0; cLevel--) {
+
+            if(pNode->level.empty()){
+                break;
+            }
             // 有下一个节点 && 下一个节点小于目标值
-            while ((pNode->level)[cLevel].forward != nullptr && (pNode->level)[cLevel].forward->score < score) {
+            while ((pNode->level)[cLevel]->forward != nullptr && (pNode->level)[cLevel]->forward->score < score) {
                 // 继续寻找 (当上面的 while 条件不成立时, 外层 for 循环中 cLevel 会 --, 即level降级寻找)
-                pNode = (pNode->level)[cLevel].forward;
+                pNode = (pNode->level)[cLevel]->forward;
             }
         }
         return pNode;
@@ -115,8 +132,8 @@ public:
         // 根据score查找集合中的前一个节点
         zskiplistNode *pNode = findBefore(score);
         // pNode 即为小于目标值的节点, 验证下一个节点是否即为目标值
-        if ((pNode->level)[0].forward != nullptr && (pNode->level)[0].forward->score == score) {
-            return (pNode->level)[0].forward;
+        if ((pNode->level)[0]->forward != nullptr && (pNode->level)[0]->forward->score == score) {
+            return (pNode->level)[0]->forward;
         }
         return nullptr;
     }
@@ -149,17 +166,18 @@ public:
         zskiplistNode *pNodeBefore = findBefore(score);
 
         // 设置后一节点的 back指针
-        if(pNodeBefore->level[0].forward != nullptr){
-            pNodeBefore->level[0].forward->backward = pNode;
+        if(pNodeBefore->level[0]->forward != nullptr){
+            pNodeBefore->level[0]->forward->backward = pNode;
         }
 
         // 赋值level
         int level = randomLevel();
         for (int i = 0 ; i < level; i++) {
+
             // 设置新节点的 next指针
-            pNode->level[i].forward = pNodeBefore->level[0].forward;
+            pNode->level[i]->forward = pNodeBefore->level[0]->forward;
             // 设置前一节点的 next指针
-            pNodeBefore->level[i].forward = pNode;
+            pNodeBefore->level[i]->forward = pNode;
         }
         // 设置新节点的 back指针
         pNode->backward = pNodeBefore;
@@ -175,9 +193,9 @@ public:
      * 返回集合数据总数
      * @return
      */
-    unsigned long zcard() {
-
-    }
+//    unsigned long zcard() {
+//
+//    }
 
     /**
      * 分数值在 min 和 max 之间的成员的数量
@@ -185,27 +203,27 @@ public:
      * @param max
      * @return
      */
-    unsigned long zcount(double min, double max) {
-
-    }
+//    unsigned long zcount(double min, double max) {
+//
+//    }
 
     /**
      * 返回有序集中指定成员的排名
      * @param obj
      * @return
      */
-    int zrank(string *obj) {
-
-    }
+//    int zrank(string *obj) {
+//
+//    }
 
     /**
      * 命令用于移除有序集中的一个，不存在的成员将被忽略
      * @param obj
      * @return
      */
-    int zrem(string *obj) {
-
-    }
+//    int zrem(string *obj) {
+//
+//    }
 
     /**
      * 对有序集合中指定成员的分数加上增量 increment
@@ -213,9 +231,9 @@ public:
      * @param obj
      * @return 自增后的分数
      */
-    double zincrby(double increment, string *obj) {
-
-    }
+//    double zincrby(double increment, string *obj) {
+//
+//    }
 
     /**
      * 根据分数区间查询数据集合
@@ -223,27 +241,27 @@ public:
      * @param max
      * @return
      */
-    string **zrevrangebyscore(double min, double max) {
-
-    }
+//    string **zrevrangebyscore(double min, double max) {
+//
+//    }
 
     /**
      * 由数据查询它对应的分数, 不是skiplist所支持的
      * @param obj
      * @return
      */
-    double zscore(string *obj) {
-
-    }
+//    double zscore(string *obj) {
+//
+//    }
 
     /**
      * 由数据查询它对应的排名, skiplist中并不支持
      * @param obj
      * @return
      */
-    int zrevrank(string *obj) {
-
-    }
+//    int zrevrank(string *obj) {
+//
+//    }
 
     /**
      * 根据一个排名范围，查询排名在这个范围内的数据
@@ -251,9 +269,26 @@ public:
      * @param high
      * @return
      */
-    string **zrevrange(int low, int high) {
-
-    }
+//    string **zrevrange(int low, int high) {
+//
+//    }
 };
+
+void SortedSet::test() {
+    auto *pSet = new SortedSet;
+    string str1 = "str1";
+    string str2 = "str2";
+    string str3 = "str3";
+    string str4 = "str4";
+
+    pSet->zadd(1, &str1);
+    pSet->zadd(2, &str2);
+    pSet->zadd(3, &str3);
+    pSet->zadd(4, &str4);
+
+    string *pString = pSet->find(2)->obj;
+    assert(pString == &str2);
+    
+}
 
 #endif //DATA_STRUCTURE_SORTEDSET_HPP

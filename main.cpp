@@ -6,6 +6,7 @@
 #include "data/LinkedListQueue.hpp"
 #include "data/SortedSet.hpp"
 #include "data/HashMap.hpp"
+#include "data/BinarySearchTree.hpp"
 #include "algorithm/Sorts.hpp"
 #include "algorithm/Search.hpp"
 

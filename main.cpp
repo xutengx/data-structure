@@ -5,6 +5,7 @@
 #include "data/ArrayQueue.hpp"
 #include "data/LinkedListQueue.hpp"
 #include "data/SortedSet.hpp"
+#include "data/HashMap.hpp"
 #include "algorithm/Sorts.hpp"
 #include "algorithm/Search.hpp"
 
@@ -17,6 +18,7 @@ int main() {
 //    LinkedListQueue<int>::test();
 //    Sorts<int>::test();
 //    Search::test();
-    SortedSet::test();
+//    SortedSet::test();
+    HashMap::test();
     return 0;
 }

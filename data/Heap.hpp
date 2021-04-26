@@ -29,13 +29,17 @@ private:
     int maxSize;
     int count = 0;
 
-    static void swap(Node * father, Node * node){
-        int tInt = father->key;
-        string tString = father->val;
-        father->key = node->key;
-        father->val = node->val;
-        node->key = tInt;
-        node->val = tString;
+    static void swap(Node *father, Node *node) {
+        Node * temp = father;
+        father = node;
+        node = temp;
+
+//        int tInt = father->key;
+//        string tString = father->val;
+//        father->key = node->key;
+//        father->val = node->val;
+//        node->key = tInt;
+//        node->val = tString;
     }
 
 public:
@@ -44,7 +48,7 @@ public:
     explicit Heap(bool isBigHeap, int maxSize) {
         bigHeap = isBigHeap;
         this->maxSize = maxSize;
-        data = new Node*[maxSize + 2];       // 0 不使用所以加一; 先加在判断是否满,所以容量再加一
+        data = new Node *[maxSize + 2];       // 0 不使用所以加一; 先加在判断是否满,所以容量再加一
     }
 
     ~Heap() {
@@ -60,47 +64,98 @@ public:
         data[newIndex] = newNode;
 
         // 父节点
-        int fatherIndex = newIndex/2;
-        Node * fatherNode = data[fatherIndex];
+        int fatherIndex = newIndex / 2;
+        Node *fatherNode = data[fatherIndex];
 
         // 大头堆
-        while (bigHeap && fatherNode->key < newNode->key){
+        while (bigHeap && fatherIndex != 0 && fatherNode->key < newNode->key) {
             // 值交换
-            swap(fatherNode , newNode);
+            swap(fatherNode, newNode);
             // 当前节点的 idx 切换到父节点的 idx
             newIndex = fatherIndex;
             // 当前节点
             newNode = data[newIndex];
             // 父节点
-            fatherNode = data[newIndex/2];
+            fatherNode = data[newIndex / 2];
         }
 
         // 小头堆
-        while(!bigHeap && (fatherNode->key > newNode->key)){
-            swap(fatherNode , newNode);
+        while (!bigHeap && fatherIndex != 0 && (fatherNode->key > newNode->key)) {
+            swap(fatherNode, newNode);
             newIndex = fatherIndex;
             newNode = data[newIndex];
-            fatherNode = data[newIndex/2];
+            fatherNode = data[newIndex / 2];
         }
 
         // 未满的情况才增加计数, 满了就不变
-        if(count != maxSize){
-            count ++;
+        if (count != maxSize) {
+            count++;
         }
     }
 
-    void dump(){
-        cout << "dump heap " << bigHeap <<"\n";
-        for(int i = 1; i < count; i++){
+    Node *pop() {
+        if (count == 0) {
+            return nullptr;
+        }
+        if (count == 1) {
+            return nullptr;
+        }
+        if (count == 0) {
+            return nullptr;
+        }
+        if (count == 0) {
+            return nullptr;
+        }
+        // 头元素
+        Node *pNode = data[1];
+
+        int fatherIdx = 1;
+        int leftIdx = 2;
+        int rightIdx = 3;
+
+
+        while (rightIdx <= count) {
+            // 大头
+            if(data[fatherIdx] < data[leftIdx] ||  data[fatherIdx] < data[rightIdx]){
+                if (data[leftIdx]->key > data[rightIdx]->key) {
+                    swap(data[fatherIdx], data[leftIdx]);
+                    fatherIdx = leftIdx;
+                    leftIdx = fatherIdx / 2;
+                    rightIdx = leftIdx + 1;
+                } else {
+                    swap(data[fatherIdx], data[rightIdx]);
+                    fatherIdx = rightIdx;
+                    leftIdx = fatherIdx / 2;
+                    rightIdx = leftIdx + 1;
+                }
+            } else
+                break;
+
+        }
+        count--;
+        return pNode;
+
+    }
+
+    void dump() {
+        cout << "dump heap " << bigHeap << "\n";
+        for (int i = 1; i <= count; i++) {
             cout << "data[" << i << "], key = " << data[i]->key << " , val = " << data[i]->val << " .\n";
         }
         cout << "\n";
     }
 
     static void test() {
-        Heap *pHeap = new Heap;
+        Heap *pHeap = new Heap(true, 4);
         pHeap->put(999, "(((((999)))))");
+        pHeap->put(9, "(((((9)))))");
+        pHeap->put(99, "(((((99)))))");
+        pHeap->put(1, "(((((1)))))");
         pHeap->dump();
+        assert(pHeap->pop()->val == "(((((999)))))");
+        assert(pHeap->pop()->val == "(((((99)))))");
+        assert(pHeap->pop()->val == "(((((9)))))");
+        assert(pHeap->pop()->val == "(((((1)))))");
     }
 };
 

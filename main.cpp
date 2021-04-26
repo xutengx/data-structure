@@ -8,6 +8,7 @@
 #include "data/HashMap.hpp"
 #include "data/BinarySearchTree.hpp"
 #include "data/Heap.hpp"
+#include "data/Graph.hpp"
 #include "algorithm/Sorts.hpp"
 #include "algorithm/Search.hpp"
 
@@ -23,6 +24,7 @@ int main() {
 //    SortedSet::test();
 //    HashMap::test();
 //    BinarySearchTree::test();
-    Heap::test();
+//    Heap::test();
+    Graph::test();
     return 0;
 }

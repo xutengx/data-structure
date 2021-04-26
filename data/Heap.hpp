@@ -30,7 +30,7 @@ private:
     int count = 0;
 
     static void swap(Node **father, Node **node) {
-        Node * temp = *father;
+        Node *temp = *father;
         *father = *node;
         *node = temp;
 

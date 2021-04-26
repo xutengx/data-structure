@@ -5,6 +5,8 @@
 #ifndef DATA_STRUCTURE_BINARYSEARCHTREE_HPP
 #define DATA_STRUCTURE_BINARYSEARCHTREE_HPP
 
+#include <functional>
+
 /**
  * 二叉查找树
  * 二叉树: 每个节点最多有两个“叉”，也就是两个子节点，分别是左子节点和右子节点。
@@ -21,20 +23,20 @@ private:
     Node *root = nullptr;
 
 
-    static void put(Node *node, int key, const string &val) {
-        if (node == nullptr) {
-            node = new Node;
-            node->key = key;
-            node->value = val;
+    static void put(Node **node, int key, const string &val) {
+        if (*node == nullptr) {
+            *node = new Node;
+            (*node)->key = key;
+            (*node)->value = val;
             return;
         }
 
-        if (node->key == key) {
-            node->value = val;
-        } else if (node->key > key) {
-            put(node->left, key, val);
+        if ((*node)->key == key) {
+            (*node)->value = val;
+        } else if ((*node)->key > key) {
+            put(&(*node)->left, key, val);
         } else {
-            put(node->right, key, val);
+            put(&(*node)->right, key, val);
         }
     }
 
@@ -130,8 +132,8 @@ private:
         return target;
     }
 
-    void dump(const Node &node) {
-
+    static void dump(const Node *node) {
+        cout << "node.key : " << node->key << " , " << "node.value : " << node->value << "\n";
     }
 
 public:
@@ -142,7 +144,7 @@ public:
      * @param val
      */
     void put(int key, const string &val) {
-        put(root, key, val);
+        put(&root, key, val);
     }
 
     /**
@@ -187,21 +189,81 @@ public:
     /**
      * 先序遍历:根结点--》左子树---》右子树
      */
-    void preorder() {
+    void preOrder() {
+        cout << " preOrder begin \n";
+        // 函数指针
+        void (*pDump)(const Node *) = dump;
+
+        // 声明匿名函数，得到函数指针
+        function<void(const Node *)> preOrderReal;
+        preOrderReal = [&preOrderReal, pDump](const Node *node) {
+            if (node == nullptr)
+                return;
+            (*pDump)(node);
+            preOrderReal(node->left);
+            preOrderReal(node->right);
+        };
+        preOrderReal(root);
+        cout << " preOrder end \n\n";
 
     }
 
     /**
      * 中序遍历:左子树--》跟节点---》右子树
      */
-    void inorder() {
+    void inOrder() {
+        cout << " inOrder begin \n";
+        // 函数指针
+        void (*pDump)(const Node *) = dump;
 
+        // 声明匿名函数，得到函数指针
+        function<void(const Node *)> inOrderReal;
+        inOrderReal = [&inOrderReal, pDump](const Node *node) {
+            if (node == nullptr)
+                return;
+            inOrderReal(node->left);
+            (*pDump)(node);
+            inOrderReal(node->right);
+        };
+        inOrderReal(root);
+        cout << " inOrder end \n\n";
     }
 
     /**
      * 后序遍历:左子树---》右子树-》根节点
      */
-    void postorder() {
+    void postOrder() {
+        cout << " postOrder begin \n";
+        // 函数指针
+        void (*pDump)(const Node *) = dump;
+
+        // 声明匿名函数，得到函数指针
+        function<void(const Node *)> postOrderReal;
+        postOrderReal = [&postOrderReal, pDump](const Node *node) {
+            if (node == nullptr)
+                return;
+            postOrderReal(node->left);
+            postOrderReal(node->right);
+            (*pDump)(node);
+        };
+        postOrderReal(root);
+        cout << " postOrder end \n\n";
+    }
+
+    static void test(){
+        auto *pTree = new BinarySearchTree;
+        for(int i = 0; i <9; i++){
+            pTree->put(i, "key" + to_string(i));
+        }
+        pTree->preOrder();
+        pTree->inOrder();
+        pTree->postOrder();
+
+        for(int i = 0; i <9; i++){
+            assert(*pTree->find(i) == ("key" + to_string(i)));
+        }
+        pTree->del(1);
+        assert(pTree->find(1) == nullptr);
 
     }
 };

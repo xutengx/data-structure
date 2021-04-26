@@ -29,10 +29,10 @@ private:
     int maxSize;
     int count = 0;
 
-    static void swap(Node *father, Node *node) {
-        Node * temp = father;
-        father = node;
-        node = temp;
+    static void swap(Node **father, Node **node) {
+        Node * temp = *father;
+        *father = *node;
+        *node = temp;
 
 //        int tInt = father->key;
 //        string tString = father->val;
@@ -70,7 +70,7 @@ public:
         // 大头堆
         while (bigHeap && fatherIndex != 0 && fatherNode->key < newNode->key) {
             // 值交换
-            swap(fatherNode, newNode);
+            swap(&fatherNode, &newNode);
             // 当前节点的 idx 切换到父节点的 idx
             newIndex = fatherIndex;
             // 当前节点
@@ -81,7 +81,7 @@ public:
 
         // 小头堆
         while (!bigHeap && fatherIndex != 0 && (fatherNode->key > newNode->key)) {
-            swap(fatherNode, newNode);
+            swap(&fatherNode, &newNode);
             newIndex = fatherIndex;
             newNode = data[newIndex];
             fatherNode = data[newIndex / 2];
@@ -97,42 +97,28 @@ public:
         if (count == 0) {
             return nullptr;
         }
-        if (count == 1) {
-            return nullptr;
-        }
-        if (count == 0) {
-            return nullptr;
-        }
-        if (count == 0) {
-            return nullptr;
-        }
-        // 头元素
+
         Node *pNode = data[1];
+        swap(&data[1], &data[count]);
 
-        int fatherIdx = 1;
-        int leftIdx = 2;
-        int rightIdx = 3;
-
-
-        while (rightIdx <= count) {
-            // 大头
-            if(data[fatherIdx] < data[leftIdx] ||  data[fatherIdx] < data[rightIdx]){
-                if (data[leftIdx]->key > data[rightIdx]->key) {
-                    swap(data[fatherIdx], data[leftIdx]);
-                    fatherIdx = leftIdx;
-                    leftIdx = fatherIdx / 2;
-                    rightIdx = leftIdx + 1;
-                } else {
-                    swap(data[fatherIdx], data[rightIdx]);
-                    fatherIdx = rightIdx;
-                    leftIdx = fatherIdx / 2;
-                    rightIdx = leftIdx + 1;
-                }
-            } else
-                break;
-
-        }
+        int parent = 1;
+        int left, right, max;
         count--;
+
+        while (true) {
+            left = parent * 2;
+            right = left + 1;
+            max = parent;
+            if (left <= count && data[max]->key < data[left]->key)
+                max = left;
+            if (right <= count && data[max]->key < data[right]->key)
+                max = right;
+            if (max == parent)
+                break;
+            swap(&data[max], &data[parent]);
+            parent = max;
+        }
+
         return pNode;
 
     }
@@ -147,15 +133,18 @@ public:
 
     static void test() {
         Heap *pHeap = new Heap(true, 4);
-        pHeap->put(999, "(((((999)))))");
-        pHeap->put(9, "(((((9)))))");
-        pHeap->put(99, "(((((99)))))");
-        pHeap->put(1, "(((((1)))))");
+        pHeap->put(999, "999");
+        pHeap->put(9, "9");
+        pHeap->put(99, "99");
+        pHeap->put(1, "1");
         pHeap->dump();
-        assert(pHeap->pop()->val == "(((((999)))))");
-        assert(pHeap->pop()->val == "(((((99)))))");
-        assert(pHeap->pop()->val == "(((((9)))))");
-        assert(pHeap->pop()->val == "(((((1)))))");
+        assert(pHeap->pop()->val == "999");
+        pHeap->dump();
+        assert(pHeap->pop()->val == "99");
+        pHeap->dump();
+        assert(pHeap->pop()->val == "9");
+        pHeap->dump();
+        assert(pHeap->pop()->val == "1");
     }
 };
 

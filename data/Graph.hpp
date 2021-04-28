@@ -5,6 +5,9 @@
 #ifndef DATA_STRUCTURE_GRAPH_HPP
 #define DATA_STRUCTURE_GRAPH_HPP
 
+#include "LinkedListQueue.hpp"
+#include "functional"
+
 /**
  * 图
  *
@@ -20,7 +23,7 @@
 class Graph {
 private:
     struct Node {
-        int vertex = 0;
+        int vertex = -1; // 节点名字
         int weight = 1;
         Node *next = nullptr;
     };
@@ -34,8 +37,8 @@ public:
         this->size = size;
         data = new Node *[size];
         // 初始化链表头节点
-        for(int i = 0 ; i < size; i++){
-            data[i] = new Node;
+        for (int i = 0; i < size; i++) {
+            data[i] = nullptr;
         }
     }
 
@@ -54,6 +57,12 @@ public:
         }
         // 查找是否已经存在
         Node *pNode = data[one];
+        if (pNode == nullptr) {
+            data[one] = new Node;
+            data[one]->vertex = two;
+            return true;
+        }
+
         while (pNode->vertex != two && pNode->next != nullptr) {
             pNode = pNode->next;
         }
@@ -72,20 +81,28 @@ public:
      * @return
      */
     bool delEdge(int one, int two) {
+//        cout<< "delEdge " << one << " , " << two << " \n";
         // 越界检查
         if (one > size - 1 || two > size - 1) {
             return false;
         }
         // 查找是否已经存在
         Node *pNode, *preNode;
-        pNode = preNode = data[one];
-        while (pNode->vertex != two && pNode->next != nullptr) {
+        preNode = nullptr;
+        pNode = data[one];
+
+        // 下一个
+        while (pNode != nullptr && pNode->vertex != two) {
             preNode = pNode;
             pNode = pNode->next;
         }
         // 存在则删除
-        if (pNode->vertex == two) {
-            preNode->next = pNode->next;
+        if(pNode->vertex == two){
+            if(preNode != nullptr){
+                preNode->next = pNode->next;
+            } else{
+                data[one] = pNode->next;
+            }
             delete pNode;
         }
         return true;
@@ -93,12 +110,12 @@ public:
 
     void dump() {
         cout << "dump begin \n";
-        for(int i = 0; i< size; i++){
+        for (int i = 0; i < size; i++) {
             cout << "data[" << i << "] -> ";
             Node *pNode = data[i];
-            while (pNode->next != nullptr) {
-                pNode = pNode->next;
+            while (pNode != nullptr) {
                 cout << pNode->vertex << " -> ";
+                pNode = pNode->next;
             }
             cout << "\n";
         }
@@ -109,10 +126,63 @@ public:
      * 广度优先搜索
      *
      * 直观地讲，它其实就是一种“地毯式”层层推进的搜索策略，即先查找离起始顶点最近的，然后是次近的，依次往外搜索。
-     * @param one
-     * @param two
+     * @param start
+     * @param target
      */
-    void breadthFirstSearch(int one, int two){
+    void breadthFirstSearch(int start, int target) {
+        // 记录是否已经访问过了
+        int *visited = new int[size];
+        // 查询轨迹结论
+        int *result = new int[size];
+        int resultSize = 0;
+        // 初始化 visited
+        for (int i = 0; i < size; i++) {
+            visited[i] = 0;
+        }
+
+        // 队列
+        auto *pQueue = new LinkedListQueue<int>();
+
+        // 当前操作节点值
+        int temp = start;
+//        for(int i = 0 ; i < size; i++){
+//
+//        }
+        function<void(Node *)> tFunc;
+        tFunc = [&pQueue, &visited](Node *tempNode) -> void {
+            while (tempNode != nullptr) {
+                // 如果没有访问过
+                if (visited[tempNode->vertex] == 0) {
+                    // 入列
+                    pQueue->push(tempNode->vertex);
+                    // 标记已经访问
+                    visited[tempNode->vertex] = 1;
+                }
+                tempNode = tempNode->next;
+            }
+        };
+
+        Node *tempNode = data[temp];
+        tFunc(tempNode);
+        int i = pQueue->pop();
+//        result[resultSize++] = i;
+        while (i != -1) {
+            result[resultSize++] = i;
+            if (i != target) {
+                // 入列
+                tFunc(data[i]);
+                i = pQueue->pop();
+            } else {
+                break;
+            }
+        }
+
+        // 打印结论
+        cout << "RESULT : ";
+        for (int in = 0; in < resultSize; in++) {
+            cout << result[in] << " ";
+        }
+        cout << "\n";
 
     };
 
@@ -124,28 +194,39 @@ public:
      * @param one
      * @param two
      */
-    void depthFirstSearch(int one, int two){
+    void depthFirstSearch(int one, int two) {
 
     };
 
 
     static void test() {
         auto *pGraph = new Graph;
-        pGraph->addEdge(1,2);
-        pGraph->addEdge(1,3);
-        pGraph->addEdge(1,4);
-        pGraph->addEdge(1,5);
-        pGraph->addEdge(2,1);
-        pGraph->addEdge(2,2);   // 忽略
-        pGraph->addEdge(2,3);
-        pGraph->addEdge(2,4);
-        pGraph->addEdge(2,5);
+        pGraph->addEdge(1, 2);
+        pGraph->addEdge(1, 3);
+        pGraph->addEdge(1, 4);
+        pGraph->addEdge(1, 5);
+        pGraph->addEdge(2, 1);
+        pGraph->addEdge(2, 2);   // 忽略
+        pGraph->addEdge(2, 3);
+        pGraph->addEdge(2, 4);
+        pGraph->addEdge(2, 5);
         pGraph->dump();
-        pGraph->delEdge(1,2);
-        pGraph->delEdge(1,4);
-        pGraph->delEdge(2,5);
-        pGraph->delEdge(2,1);
+        pGraph->delEdge(1, 2);
+        pGraph->delEdge(1, 4);
+        pGraph->delEdge(2, 5);
+        pGraph->delEdge(2, 1);
         pGraph->dump();
+
+
+        pGraph->addEdge(1, 2);
+        pGraph->addEdge(2, 3);
+        pGraph->addEdge(2, 4);
+        pGraph->addEdge(3, 5);
+        pGraph->addEdge(3, 1);
+        pGraph->dump();
+
+
+        pGraph->breadthFirstSearch(1, 4);
     }
 };
 

@@ -84,7 +84,7 @@ T LinkedListQueue<T>::pop() {
         cout << "pop : " << pNode->val << "\n";
         return pNode->val;
     }
-    return {};
+    return -1;
 }
 
 template<class T>
@@ -93,7 +93,7 @@ T LinkedListQueue<T>::peek() {
         cout << "peek : " << head->next->val << "\n";
         return head->next->val;
     }
-    return {};
+    return -1;
 }
 
 template<class T>

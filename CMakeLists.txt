@@ -8,3 +8,4 @@ add_executable(4-median-of-two-sorted-arrays leetcode/editor/cn/4-median-of-two-
 add_executable(23-merge-k-sorted-lists leetcode/editor/cn/23-merge-k-sorted-lists.cpp)
 add_executable(1-two-sum leetcode/editor/cn/1-two-sum.cpp)
 add_executable(2-add-two-numbers leetcode/editor/cn/2-add-two-numbers.cpp)
+add_executable(3-longest-substring-without-repeating-characters leetcode/editor/cn/3-longest-substring-without-repeating-characters.cpp)

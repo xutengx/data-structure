@@ -7,3 +7,4 @@ add_executable(data-structure main.cpp 05_array/array.c 05_array/array.h data/Li
 add_executable(4-median-of-two-sorted-arrays leetcode/editor/cn/4-median-of-two-sorted-arrays.cpp)
 add_executable(23-merge-k-sorted-lists leetcode/editor/cn/23-merge-k-sorted-lists.cpp)
 add_executable(1-two-sum leetcode/editor/cn/1-two-sum.cpp)
+add_executable(2-add-two-numbers leetcode/editor/cn/2-add-two-numbers.cpp)

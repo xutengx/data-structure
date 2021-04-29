@@ -97,10 +97,10 @@ public:
             pNode = pNode->next;
         }
         // 存在则删除
-        if(pNode->vertex == two){
-            if(preNode != nullptr){
+        if (pNode->vertex == two) {
+            if (preNode != nullptr) {
                 preNode->next = pNode->next;
-            } else{
+            } else {
                 data[one] = pNode->next;
             }
             delete pNode;
@@ -183,7 +183,6 @@ public:
             cout << result[in] << " ";
         }
         cout << "\n";
-
     };
 
     /**
@@ -195,6 +194,39 @@ public:
      * @param two
      */
     void depthFirstSearch(int one, int two) {
+        // 记录是否已经访问过了
+        int *visited = new int[size];
+        // 查询轨迹结论
+        int *result = new int[size];
+        int resultSize = 0;
+        Node **dataT = data;
+
+        function<void(int, int)> depthFirstSearchReal;
+
+        depthFirstSearchReal = [&visited, &result, &dataT, &depthFirstSearchReal, &resultSize](int oneT, int twoT) {
+            Node *pNode = dataT[oneT];
+            while (pNode != nullptr) {
+                if (pNode->vertex != twoT) {
+                    if (visited[oneT] == 0) {
+                        visited[oneT] = 1;
+                        result[resultSize++] = pNode->vertex;
+                        depthFirstSearchReal(dataT[oneT]->vertex, twoT);
+                    }
+                } else{
+                    result[resultSize++] = pNode->vertex;
+                    return ;
+                }
+                pNode = pNode->next;
+            }
+        };
+
+        depthFirstSearchReal(one, two);
+        // 打印结论
+        cout << "RESULT : ";
+        for (int in = 0; in < resultSize; in++) {
+            cout << result[in] << " ";
+        }
+        cout << "\n";
 
     };
 
@@ -223,10 +255,12 @@ public:
         pGraph->addEdge(2, 4);
         pGraph->addEdge(3, 5);
         pGraph->addEdge(3, 1);
+        pGraph->addEdge(5, 2);
         pGraph->dump();
 
 
         pGraph->breadthFirstSearch(1, 4);
+        pGraph->depthFirstSearch(1, 4);
     }
 };
 

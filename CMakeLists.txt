@@ -9,3 +9,4 @@ add_executable(23-merge-k-sorted-lists leetcode/editor/cn/23-merge-k-sorted-list
 add_executable(1-two-sum leetcode/editor/cn/1-two-sum.cpp)
 add_executable(2-add-two-numbers leetcode/editor/cn/2-add-two-numbers.cpp)
 add_executable(3-longest-substring-without-repeating-characters leetcode/editor/cn/3-longest-substring-without-repeating-characters.cpp)
+add_executable(5-longest-palindromic-substring leetcode/editor/cn/5-longest-palindromic-substring.cpp)

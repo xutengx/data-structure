@@ -72,7 +72,7 @@ bool LinkedListQueue<T>::push(T value) {
     } else{
         head->next = tail = pNode;
     }
-    cout << "push : " << value << "\n";
+//    cout << "push : " << value << "\n";
     return true;
 }
 
@@ -81,7 +81,7 @@ T LinkedListQueue<T>::pop() {
     if(head->next != nullptr){
         Node *pNode = head->next;
         head->next = (head->next->next != nullptr) ? head->next->next : nullptr;
-        cout << "pop : " << pNode->val << "\n";
+//        cout << "pop : " << pNode->val << "\n";
         return pNode->val;
     }
     return -1;

@@ -12,3 +12,4 @@ add_executable(3-longest-substring-without-repeating-characters leetcode/editor/
 add_executable(5-longest-palindromic-substring leetcode/editor/cn/5-longest-palindromic-substring.cpp)
 add_executable(403-frog-jump leetcode/editor/cn/403-frog-jump.cpp)
 add_executable(137-single-number-ii leetcode/editor/cn/137-single-number-ii.cpp)
+add_executable(6-zigzag-conversion leetcode/editor/cn/6-zigzag-conversion.cpp)

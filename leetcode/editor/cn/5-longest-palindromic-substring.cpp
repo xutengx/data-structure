@@ -62,6 +62,7 @@ public:
         string result;
         unsigned int resultLength = 0;
 
+        //  a[x][y]=b[x*列数+y]
         // 因为后续代码会限定，j>i, 所以第二维不需要满长度
         // 0表示未处理，t表示是回文字符，f表示不是回文字符, n表示未处理
         char **cache = new char *[strLength];

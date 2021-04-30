@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.17)
 project(data-structure)
 
 set(CMAKE_CXX_STANDARD 11)
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -fno-omit-frame-pointer -fsanitize=leak -g")
 
 add_executable(data-structure main.cpp 05_array/array.c 05_array/array.h data/LinkedList.hpp data/ArrayStack.hpp data/LinkedListStack.hpp data/ArrayQueue.hpp data/LinkedListQueue.hpp algorithm/Sorts.hpp algorithm/Search.hpp data/SortedSet.hpp data/HashMap.hpp data/BinarySearchTree.hpp data/Heap.hpp data/Graph.hpp)
 add_executable(4-median-of-two-sorted-arrays leetcode/editor/cn/4-median-of-two-sorted-arrays.cpp)
@@ -13,3 +14,5 @@ add_executable(5-longest-palindromic-substring leetcode/editor/cn/5-longest-pali
 add_executable(403-frog-jump leetcode/editor/cn/403-frog-jump.cpp)
 add_executable(137-single-number-ii leetcode/editor/cn/137-single-number-ii.cpp)
 add_executable(6-zigzag-conversion leetcode/editor/cn/6-zigzag-conversion.cpp)
+add_executable(7-reverse-integer leetcode/editor/cn/7-reverse-integer.cpp)
+add_executable(8-string-to-integer-atoi leetcode/editor/cn/8-string-to-integer-atoi.cpp)

@@ -50,36 +50,91 @@
 #include "functional"
 
 using namespace std;
- 
+
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
 public:
     string longestPalindrome(string s) {
+
         const char *str = s.data();
-        unsigned long strLength = s.size();
+        int strLength = s.size();
+        // 当前结论
+        string result;
+        unsigned int resultLength = 0;
 
-        int startIdx = 0;
-        int endIdx = 0;
-
-        while (endIdx < strLength){
-
-
-
-            // 是否是回文
-            for(int i = startIdx; i < endIdx ; i++){
-
+        // 因为后续代码会限定，j>i, 所以第二维不需要满长度
+        // 0表示未处理，t表示是回文字符，f表示不是回文字符, n表示未处理
+        char **cache = new char *[strLength];
+        for (int i = 0; i < strLength; i++) {
+            int tempLength = strLength - i + 1;
+            char *pInt = new char[tempLength];
+            for (int j = 0; j < tempLength; j++) {
+                pInt[j] = 'n';
             }
-
-
-
-
-            endIdx++;
+            cache[i] = pInt;
         }
+
+        function<bool(unsigned int, unsigned int)> longestPalindromeReal;
+
+        longestPalindromeReal = [&longestPalindromeReal, &cache, &str, &strLength](unsigned int one,
+                                                                                   unsigned int two) -> bool {
+            if (cache[one][strLength - two] != 'n') {
+                return cache[one][strLength - two] == 't';
+            } else {
+                bool flag;
+                if (one > two) {
+                    flag = false;
+                } else if (one == two) {
+                    flag = true;
+                } else {
+                    if (str[one] == str[two]) {
+                        if (two - one == 1) {
+                            flag = true;
+                        } else {
+                            flag = longestPalindromeReal(one + 1, two - 1);
+                        }
+                    } else {
+                        flag = false;
+                    }
+                }
+                cache[one][strLength - two] = flag ? 't' : 'f';
+                return flag;
+            }
+        };
+        // 执行
+        for (int i = 0; i < strLength; i++) {
+            // 快速结束 - 较短的没有必要弄（i 递增）
+            if (resultLength >= (strLength - i)) {
+                break;
+            }
+//            cout << "";
+            for (int j = (strLength - 1); j >= i; j--) {
+//                cout << "";
+                // 快速结束 - 较短的没有必要弄（j 递减）
+                if (resultLength >= (j - i + 1)) {
+                    break;
+                }
+                if (longestPalindromeReal(i, j)) {
+                    resultLength = j - i + 1;
+                    result = s.substr(i, resultLength);
+                }
+            }
+        }
+        return result;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
 
 
-int main(){
+int main() {
+    Solution solution;
+
+    assert(solution.longestPalindrome("cbbd") == "bb");
+    assert(solution.longestPalindrome("bb") == "bb");
+    assert(solution.longestPalindrome("babad") == "bab");
+    assert(solution.longestPalindrome("b") == "b");
+    assert(solution.longestPalindrome("baaad") == "aaa");
+    assert(solution.longestPalindrome("acbcbbca") == "cbbc");
+
     return 0;
 }

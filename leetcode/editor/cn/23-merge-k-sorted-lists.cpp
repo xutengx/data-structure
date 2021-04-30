@@ -53,6 +53,16 @@
 
 using namespace std;
 
+struct ListNode {
+    int val;
+    ListNode *next;
+
+    ListNode() : val(0), next(nullptr) {}
+
+    ListNode(int x) : val(x), next(nullptr) {}
+
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
 //leetcode submit region begin(Prohibit modification and deletion)
 /**
  * Definition for singly-linked list.
@@ -67,34 +77,34 @@ using namespace std;
 class Solution {
 public:
     ListNode *mergeKLists(vector<ListNode *> &lists) {
-        if(lists.size() == 0){
+        if (lists.size() == 0) {
             return nullptr;
         }
 
-        ListNode * temp = lists[0];
+        ListNode *temp = lists[0];
         for (int i = 1; i < lists.size(); i++) {
             temp = merge(temp, lists[i]);
         }
         return temp;
     }
 
-    static ListNode * merge(ListNode * one, ListNode * two){
-        ListNode * head = new ListNode;
-        ListNode * temp = head;
-        while (one != nullptr && two != nullptr){
-            if(one->val <= two->val){
+    static ListNode *merge(ListNode *one, ListNode *two) {
+        ListNode *head = new ListNode;
+        ListNode *temp = head;
+        while (one != nullptr && two != nullptr) {
+            if (one->val <= two->val) {
                 temp->next = one;
                 one = one->next;
-            }else{
+            } else {
                 temp->next = two;
                 two = two->next;
             }
             temp = temp->next;
         }
-        if (one != nullptr){
+        if (one != nullptr) {
             temp->next = one;
         }
-        if (two != nullptr){
+        if (two != nullptr) {
             temp->next = two;
         }
         return head->next;
@@ -103,9 +113,9 @@ public:
 //leetcode submit region end(Prohibit modification and deletion)
 
 
-int main(){
+int main() {
     Solution solution;
     //
-    
+
     return 0;
 }

@@ -20,3 +20,4 @@ add_executable(690-employee-importance leetcode/editor/cn/690-employee-importanc
 add_executable(9-palindrome-number leetcode/editor/cn/9-palindrome-number.cpp)
 add_executable(10-regular-expression-matching leetcode/editor/cn/10-regular-expression-matching.cpp)
 add_executable(11-container-with-most-water leetcode/editor/cn/11-container-with-most-water.cpp)
+add_executable(25-reverse-nodes-in-k-group leetcode/editor/cn/25-reverse-nodes-in-k-group.cpp)

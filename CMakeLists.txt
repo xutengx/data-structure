@@ -22,3 +22,4 @@ add_executable(10-regular-expression-matching leetcode/editor/cn/10-regular-expr
 add_executable(11-container-with-most-water leetcode/editor/cn/11-container-with-most-water.cpp)
 add_executable(25-reverse-nodes-in-k-group leetcode/editor/cn/25-reverse-nodes-in-k-group.cpp)
 add_executable(19-remove-nth-node-from-end-of-list leetcode/editor/cn/19-remove-nth-node-from-end-of-list.cpp)
+add_executable(30-substring-with-concatenation-of-all-words leetcode/editor/cn/30-substring-with-concatenation-of-all-words.cpp)

@@ -39,28 +39,47 @@ using namespace std;
 class Solution {
 public:
     vector<int> findSubstring(string s, vector<string> &words) {
-        unordered_map<string, int> map;
-        int sSize = (int)s.size();
-        int fIdx = 0;
+        int sSize = (int) s.size();
         int wordLength = (int) words[0].size();
         int wordCount = (int) words.size();
-        int bIdx = wordLength * wordCount;
+        //
+        vector<int> res;
 
+        // 字符出现次数，记录到map
+        unordered_map<string, int> map;
         for (const auto &string : words) {
-            map.emplace(string, 0);
+            map[string]++;
         }
 
-        while (bIdx < sSize) {
-            int fIdxTemp = fIdx;
-            for (int i = 0; i < wordCount; ++i) {
-                string ss = s.substr(fIdxTemp, fIdxTemp + wordLength);
+        // 每个窗口中的 字符出现次数，记录到map
+        vector<unordered_map<string, int>> mapLst(wordLength);
+        // 多个滑动窗口，避免遗漏
+        for (int i = 0; i < wordLength; ++i) {
+            int fIdx = i;                                   // 当前窗口的前指针
+            int bIdx = fIdx + wordLength * wordCount;       // 当前窗口的末指针
+            while (bIdx <= sSize) {
+                // 拆分单词
+                int fIdxTemp = fIdx;
+                while (fIdxTemp + wordLength <= bIdx) {
+                    string ss = s.substr(fIdxTemp, wordLength);
+                    // 尽量多的滑动，如果不存在，或者过多
+                    if (!map.count(ss) || ++(mapLst[i][ss]) > map.at(ss)) {
+                        goto rBreak;
+                    }
+                    fIdxTemp += wordLength;
+                }
+                // 记录响应
+                res.push_back(fIdx);
 
+                rBreak:
+                // 清空当前map
+                mapLst[i].clear();
+                // 滑动单词的长度
+                fIdx += wordLength;
+                bIdx += wordLength;
             }
-
-
-            // 尽可能移动
-            bIdx++;
         }
+        return res;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
@@ -68,6 +87,18 @@ public:
 
 int main() {
     Solution solution;
-    // 
+    //
+    vector<string> f1;
+    f1.emplace_back("word");
+    f1.emplace_back("good");
+    f1.emplace_back("best");
+    f1.emplace_back("good");
+    auto vector1 = solution.findSubstring("wordgoodgoodgoodbestword", f1);
+
+    vector<string> f2;
+    f2.emplace_back("foo");
+    f2.emplace_back("bar");
+    auto vector2 = solution.findSubstring("barfoothefoobarman", f2);
+
     return 0;
 }

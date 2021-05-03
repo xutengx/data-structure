@@ -26,3 +26,4 @@ add_executable(30-substring-with-concatenation-of-all-words leetcode/editor/cn/3
 add_executable(32-longest-valid-parentheses leetcode/editor/cn/32-longest-valid-parentheses.cpp)
 add_executable(104-maximum-depth-of-binary-tree leetcode/editor/cn/104-maximum-depth-of-binary-tree.cpp)
 add_executable(105-construct-binary-tree-from-preorder-and-inorder-traversal leetcode/editor/cn/105-construct-binary-tree-from-preorder-and-inorder-traversal.cpp)
+add_executable(141-linked-list-cycle leetcode/editor/cn/141-linked-list-cycle.cpp)

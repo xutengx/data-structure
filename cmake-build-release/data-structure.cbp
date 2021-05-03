@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="data-structure"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="clang"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 all"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="3-longest-substring-without-repeating-characters">
+				<Option output="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release/3-longest-substring-without-repeating-characters.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 3-longest-substring-without-repeating-characters"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="3-longest-substring-without-repeating-characters/fast">
+				<Option output="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release/3-longest-substring-without-repeating-characters.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 3-longest-substring-without-repeating-characters/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="data-structure">
+				<Option output="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release/data-structure.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 data-structure"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="data-structure/fast">
+				<Option output="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release/data-structure.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 data-structure/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="1-two-sum">
+				<Option output="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release/1-two-sum.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 1-two-sum"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="1-two-sum/fast">
+				<Option output="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release/1-two-sum.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 1-two-sum/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="403-frog-jump">
+				<Option output="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release/403-frog-jump.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 403-frog-jump"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="403-frog-jump/fast">
+				<Option output="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release/403-frog-jump.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 403-frog-jump/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4-median-of-two-sorted-arrays">
+				<Option output="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release/4-median-of-two-sorted-arrays.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 4-median-of-two-sorted-arrays"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4-median-of-two-sorted-arrays/fast">
+				<Option output="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release/4-median-of-two-sorted-arrays.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 4-median-of-two-sorted-arrays/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="23-merge-k-sorted-lists">
+				<Option output="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release/23-merge-k-sorted-lists.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 23-merge-k-sorted-lists"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="23-merge-k-sorted-lists/fast">
+				<Option output="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release/23-merge-k-sorted-lists.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 23-merge-k-sorted-lists/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="2-add-two-numbers">
+				<Option output="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release/2-add-two-numbers.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 2-add-two-numbers"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="2-add-two-numbers/fast">
+				<Option output="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release/2-add-two-numbers.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 2-add-two-numbers/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="5-longest-palindromic-substring">
+				<Option output="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release/5-longest-palindromic-substring.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 5-longest-palindromic-substring"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="5-longest-palindromic-substring/fast">
+				<Option output="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release/5-longest-palindromic-substring.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 5-longest-palindromic-substring/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="137-single-number-ii">
+				<Option output="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release/137-single-number-ii.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 137-single-number-ii"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="137-single-number-ii/fast">
+				<Option output="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release/137-single-number-ii.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 137-single-number-ii/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="6-zigzag-conversion">
+				<Option output="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release/6-zigzag-conversion.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 6-zigzag-conversion"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="6-zigzag-conversion/fast">
+				<Option output="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release/6-zigzag-conversion.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 6-zigzag-conversion/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="7-reverse-integer">
+				<Option output="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release/7-reverse-integer.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 7-reverse-integer"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="7-reverse-integer/fast">
+				<Option output="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release/7-reverse-integer.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 7-reverse-integer/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="8-string-to-integer-atoi">
+				<Option output="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release/8-string-to-integer-atoi.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 8-string-to-integer-atoi"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="8-string-to-integer-atoi/fast">
+				<Option output="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release/8-string-to-integer-atoi.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 8-string-to-integer-atoi/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 edit_cache"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/xuteng/CLionProjects/data-structure/cmake-build-release"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\xuteng\CLionProjects\data-structure\cmake-build-release\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/xuteng/CLionProjects/data-structure/05_array/array.c">
+			<Option target="data-structure"/>
+		</Unit>
+		<Unit filename="C:/Users/xuteng/CLionProjects/data-structure/05_array/array.h">
+			<Option target="data-structure"/>
+		</Unit>
+		<Unit filename="C:/Users/xuteng/CLionProjects/data-structure/algorithm/Search.hpp">
+			<Option target="data-structure"/>
+		</Unit>
+		<Unit filename="C:/Users/xuteng/CLionProjects/data-structure/algorithm/Sorts.hpp">
+			<Option target="data-structure"/>
+		</Unit>
+		<Unit filename="C:/Users/xuteng/CLionProjects/data-structure/data/ArrayQueue.hpp">
+			<Option target="data-structure"/>
+		</Unit>
+		<Unit filename="C:/Users/xuteng/CLionProjects/data-structure/data/ArrayStack.hpp">
+			<Option target="data-structure"/>
+		</Unit>
+		<Unit filename="C:/Users/xuteng/CLionProjects/data-structure/data/BinarySearchTree.hpp">
+			<Option target="data-structure"/>
+		</Unit>
+		<Unit filename="C:/Users/xuteng/CLionProjects/data-structure/data/Graph.hpp">
+			<Option target="data-structure"/>
+		</Unit>
+		<Unit filename="C:/Users/xuteng/CLionProjects/data-structure/data/HashMap.hpp">
+			<Option target="data-structure"/>
+		</Unit>
+		<Unit filename="C:/Users/xuteng/CLionProjects/data-structure/data/Heap.hpp">
+			<Option target="data-structure"/>
+		</Unit>
+		<Unit filename="C:/Users/xuteng/CLionProjects/data-structure/data/LinkedList.hpp">
+			<Option target="data-structure"/>
+		</Unit>
+		<Unit filename="C:/Users/xuteng/CLionProjects/data-structure/data/LinkedListQueue.hpp">
+			<Option target="data-structure"/>
+		</Unit>
+		<Unit filename="C:/Users/xuteng/CLionProjects/data-structure/data/LinkedListStack.hpp">
+			<Option target="data-structure"/>
+		</Unit>
+		<Unit filename="C:/Users/xuteng/CLionProjects/data-structure/data/SortedSet.hpp">
+			<Option target="data-structure"/>
+		</Unit>
+		<Unit filename="C:/Users/xuteng/CLionProjects/data-structure/leetcode/editor/cn/1-two-sum.cpp">
+			<Option target="1-two-sum"/>
+		</Unit>
+		<Unit filename="C:/Users/xuteng/CLionProjects/data-structure/leetcode/editor/cn/137-single-number-ii.cpp">
+			<Option target="137-single-number-ii"/>
+		</Unit>
+		<Unit filename="C:/Users/xuteng/CLionProjects/data-structure/leetcode/editor/cn/2-add-two-numbers.cpp">
+			<Option target="2-add-two-numbers"/>
+		</Unit>
+		<Unit filename="C:/Users/xuteng/CLionProjects/data-structure/leetcode/editor/cn/23-merge-k-sorted-lists.cpp">
+			<Option target="23-merge-k-sorted-lists"/>
+		</Unit>
+		<Unit filename="C:/Users/xuteng/CLionProjects/data-structure/leetcode/editor/cn/3-longest-substring-without-repeating-characters.cpp">
+			<Option target="3-longest-substring-without-repeating-characters"/>
+		</Unit>
+		<Unit filename="C:/Users/xuteng/CLionProjects/data-structure/leetcode/editor/cn/4-median-of-two-sorted-arrays.cpp">
+			<Option target="4-median-of-two-sorted-arrays"/>
+		</Unit>
+		<Unit filename="C:/Users/xuteng/CLionProjects/data-structure/leetcode/editor/cn/403-frog-jump.cpp">
+			<Option target="403-frog-jump"/>
+		</Unit>
+		<Unit filename="C:/Users/xuteng/CLionProjects/data-structure/leetcode/editor/cn/5-longest-palindromic-substring.cpp">
+			<Option target="5-longest-palindromic-substring"/>
+		</Unit>
+		<Unit filename="C:/Users/xuteng/CLionProjects/data-structure/leetcode/editor/cn/6-zigzag-conversion.cpp">
+			<Option target="6-zigzag-conversion"/>
+		</Unit>
+		<Unit filename="C:/Users/xuteng/CLionProjects/data-structure/leetcode/editor/cn/7-reverse-integer.cpp">
+			<Option target="7-reverse-integer"/>
+		</Unit>
+		<Unit filename="C:/Users/xuteng/CLionProjects/data-structure/leetcode/editor/cn/8-string-to-integer-atoi.cpp">
+			<Option target="8-string-to-integer-atoi"/>
+		</Unit>
+		<Unit filename="C:/Users/xuteng/CLionProjects/data-structure/main.cpp">
+			<Option target="data-structure"/>
+		</Unit>
+		<Unit filename="C:/Users/xuteng/CLionProjects/data-structure/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

@@ -54,8 +54,6 @@ public:
     int maxDepth(TreeNode *root) {
         if (root == nullptr) {
             return 0;
-        } else if (root->left == nullptr && root->right == nullptr) {
-            return 1;
         } else {
             int left = maxDepth(root->left);
             int right = maxDepth(root->right);

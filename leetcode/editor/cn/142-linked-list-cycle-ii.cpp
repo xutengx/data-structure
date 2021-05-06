@@ -63,7 +63,17 @@
 #include "iostream"
 
 using namespace std;
+/**
+ * https://www.cnblogs.com/season-peng/p/6713491.html
+ * 求入环口 : 那么我们在第一次相遇时，把慢指针留在原地，把快指针放回起点head处，然后把快指针变为慢指针，两个指针一起以速度1前进，当它们相遇时，相遇点就是入环点4
+ * 求环长度 : 那么现在从第一次相遇(k=0)开始算，一直到第二次相遇，慢指针刚好走过一个环长n，即环长等于第一次相遇到第二次相遇，慢指针走的长度。
+ */
+struct ListNode {
+    int val;
+    ListNode *next;
 
+    ListNode(int x) : val(x), next(nullptr) {}
+};
 //leetcode submit region begin(Prohibit modification and deletion)
 /**
  * Definition for singly-linked list.
@@ -76,15 +86,33 @@ using namespace std;
 class Solution {
 public:
     ListNode *detectCycle(ListNode *head) {
-        
+        if(head == nullptr){
+            return nullptr;
+        }
+        ListNode *fastNode = head;
+        ListNode *slowNode = head;
+        while (fastNode->next != nullptr && fastNode->next->next != nullptr) {
+            slowNode = slowNode->next;
+            fastNode = fastNode->next->next;
+            // 有环的话
+            if (slowNode == fastNode) {
+                fastNode = head;
+                while (slowNode != fastNode){
+                    slowNode = slowNode->next;
+                    fastNode = fastNode->next;
+                }
+                return slowNode;
+            }
+        }
+        return nullptr;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
 
 
-int main(){
+int main() {
     Solution solution;
     // assert(solution.reverse(123) == 321);
-    
+
     return 0;
 }

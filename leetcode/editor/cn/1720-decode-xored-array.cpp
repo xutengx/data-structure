@@ -63,23 +63,37 @@ class Solution {
 public:
     vector<int> decode(vector<int> &encoded, int first) {
         vector<int> res;
-        unsigned long encodedSize = encoded.size();
-        function<void(unsigned long, int)> decodeReal;
-
-        decodeReal = [&encoded, &decodeReal, &res, &encodedSize](unsigned long encodedIdx, int value) {
-            if (encodedIdx == encodedSize) {
-                return;
-            }
-            int &encodeValue = encoded.at(encodedIdx);
-            int nexValue;
-            // encodeValue = value ^ nexValue;
-            nexValue = encodeValue ^ value;
-            res.push_back(nexValue);
-            decodeReal(++encodedIdx, nexValue);
-        };
         res.push_back(first);
-        decodeReal(0, first);
+        unsigned long encodedSize = encoded.size();
+        unsigned long encodedIdx = 0;
+        int value = first;
+        while (encodedIdx < encodedSize) {
+            int &encodeValue = encoded.at(encodedIdx);
+            value = encodeValue ^ value;
+            res.push_back(value);
+            encodedIdx++;
+        }
         return res;
+
+
+//        function<void(unsigned long, int)> decodeReal;
+//
+//        decodeReal = [&encoded, &decodeReal, &res, &encodedSize](unsigned long encodedIdx, int value) {
+//            if (encodedIdx == encodedSize) {
+//                return;
+//            }
+//            int &encodeValue = encoded.at(encodedIdx);
+//            int nexValue;
+//            // encodeValue = value ^ nexValue;
+//            nexValue = encodeValue ^ value;
+//            res.push_back(nexValue);
+//            decodeReal(++encodedIdx, nexValue);
+//        };
+//        res.push_back(first);
+//        decodeReal(0, first);
+//        return res;
+
+
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
@@ -88,7 +102,7 @@ public:
 int main() {
     Solution solution;
     //
-    vector<int> t1 = {1,2,3};
-    const vector<int> &vector = solution.decode(t1,1);
+    vector<int> t1 = {1, 2, 3};
+    const vector<int> &vector = solution.decode(t1, 1);
     return 0;
 }

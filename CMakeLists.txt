@@ -29,3 +29,4 @@ add_executable(105-construct-binary-tree-from-preorder-and-inorder-traversal lee
 add_executable(141-linked-list-cycle leetcode/editor/cn/141-linked-list-cycle.cpp)
 add_executable(142-linked-list-cycle-ii leetcode/editor/cn/142-linked-list-cycle-ii.cpp)
 add_executable(1720-decode-xored-array leetcode/editor/cn/1720-decode-xored-array.cpp)
+add_executable(295-find-median-from-data-stream leetcode/editor/cn/295-find-median-from-data-stream.cpp)

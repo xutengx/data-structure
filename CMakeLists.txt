@@ -31,3 +31,4 @@ add_executable(142-linked-list-cycle-ii leetcode/editor/cn/142-linked-list-cycle
 add_executable(1720-decode-xored-array leetcode/editor/cn/1720-decode-xored-array.cpp)
 add_executable(295-find-median-from-data-stream leetcode/editor/cn/295-find-median-from-data-stream.cpp)
 add_executable(15-3sum leetcode/editor/cn/15-3sum.cpp)
+add_executable(169-majority-element leetcode/editor/cn/169-majority-element.cpp)

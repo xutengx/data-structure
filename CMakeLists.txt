@@ -33,3 +33,4 @@ add_executable(295-find-median-from-data-stream leetcode/editor/cn/295-find-medi
 add_executable(15-3sum leetcode/editor/cn/15-3sum.cpp)
 add_executable(169-majority-element leetcode/editor/cn/169-majority-element.cpp)
 add_executable(41-first-missing-positive leetcode/editor/cn/41-first-missing-positive.cpp)
+add_executable(20-valid-parentheses leetcode/editor/cn/20-valid-parentheses.cpp)

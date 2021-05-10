@@ -36,3 +36,4 @@ add_executable(41-first-missing-positive leetcode/editor/cn/41-first-missing-pos
 add_executable(20-valid-parentheses leetcode/editor/cn/20-valid-parentheses.cpp)
 add_executable(150-evaluate-reverse-polish-notation leetcode/editor/cn/150-evaluate-reverse-polish-notation.cpp)
 add_executable(641-design-circular-deque leetcode/editor/cn/641-design-circular-deque.cpp)
+add_executable(239-sliding-window-maximum leetcode/editor/cn/239-sliding-window-maximum.cpp)

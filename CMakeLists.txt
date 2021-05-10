@@ -38,3 +38,4 @@ add_executable(150-evaluate-reverse-polish-notation leetcode/editor/cn/150-evalu
 add_executable(641-design-circular-deque leetcode/editor/cn/641-design-circular-deque.cpp)
 add_executable(239-sliding-window-maximum leetcode/editor/cn/239-sliding-window-maximum.cpp)
 add_executable(70-climbing-stairs leetcode/editor/cn/70-climbing-stairs.cpp)
+add_executable(69-sqrtx leetcode/editor/cn/69-sqrtx.cpp)

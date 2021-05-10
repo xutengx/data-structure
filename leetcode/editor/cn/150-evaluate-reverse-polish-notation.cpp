@@ -87,50 +87,82 @@ using namespace std;
 class Solution {
 public:
     int evalRPN(vector<string> &tokens) {
-        basic_string<char, char_traits<char>, allocator<char>> *pBasicString = tokens.data();
         string *pString = tokens.data();
         unsigned long size = tokens.size();
-        stack<int> ss;
+        int *stack = new int[size];
+        int stackIdx = 0;
         for (unsigned long i = 0; i < size; ++i) {
             string &basicString = pString[i];
             if (basicString == "+") {
-                int &first = ss.top();
-                ss.pop();
-                int &second = ss.top();
-                ss.pop();
-                ss.push(first + second);
+                int &first = stack[--stackIdx];
+                int &second = stack[--stackIdx];
+                stack[stackIdx++] = first + second;
             } else if (basicString == "-") {
-                int &first = ss.top();
-                ss.pop();
-                int &second = ss.top();
-                ss.pop();
-                ss.push(second - first);
+                int &first = stack[--stackIdx];
+                int &second = stack[--stackIdx];
+                stack[stackIdx++] = second - first;
             } else if (basicString == "*") {
-                int &first = ss.top();
-                ss.pop();
-                int &second = ss.top();
-                ss.pop();
-                ss.push(first * second);
+                int &first = stack[--stackIdx];
+                int &second = stack[--stackIdx];
+                stack[stackIdx++] = second * first;
             } else if (basicString == "/") {
-                int &first = ss.top();
-                ss.pop();
-                int &second = ss.top();
-                ss.pop();
-                ss.push(second / first);
+                int &first = stack[--stackIdx];
+                int &second = stack[--stackIdx];
+                stack[stackIdx++] = second / first;
             }
                 // 数字入栈
             else {
-                ss.push(stoi(basicString));
+                stack[stackIdx++] = stoi(basicString);
             }
         }
-        return ss.top();
+        return stack[--stackIdx];
     }
+//    int evalRPN(vector<string> &tokens) {
+//        string *pString = tokens.data();
+//        unsigned long size = tokens.size();
+//        stack<int> ss;
+//        for (unsigned long i = 0; i < size; ++i) {
+//            string &basicString = pString[i];
+//            if (basicString == "+") {
+//                int &first = ss.top();
+//                ss.pop();
+//                int &second = ss.top();
+//                ss.pop();
+//                ss.push(first + second);
+//            } else if (basicString == "-") {
+//                int &first = ss.top();
+//                ss.pop();
+//                int &second = ss.top();
+//                ss.pop();
+//                ss.push(second - first);
+//            } else if (basicString == "*") {
+//                int &first = ss.top();
+//                ss.pop();
+//                int &second = ss.top();
+//                ss.pop();
+//                ss.push(first * second);
+//            } else if (basicString == "/") {
+//                int &first = ss.top();
+//                ss.pop();
+//                int &second = ss.top();
+//                ss.pop();
+//                ss.push(second / first);
+//            }
+//                // 数字入栈
+//            else {
+//                ss.push(stoi(basicString));
+//            }
+//        }
+//        return ss.top();
+//    }
 };
 //leetcode submit region end(Prohibit modification and deletion)
 
 
 int main() {
     Solution solution;
-    // 
+    //
+    vector<string> t1 = {"2","1","+","3","*"};
+    solution.evalRPN(t1);
     return 0;
 }

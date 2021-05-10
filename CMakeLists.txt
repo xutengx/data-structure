@@ -32,3 +32,4 @@ add_executable(1720-decode-xored-array leetcode/editor/cn/1720-decode-xored-arra
 add_executable(295-find-median-from-data-stream leetcode/editor/cn/295-find-median-from-data-stream.cpp)
 add_executable(15-3sum leetcode/editor/cn/15-3sum.cpp)
 add_executable(169-majority-element leetcode/editor/cn/169-majority-element.cpp)
+add_executable(41-first-missing-positive leetcode/editor/cn/41-first-missing-positive.cpp)

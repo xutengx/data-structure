@@ -61,7 +61,7 @@ public:
         int right = 0;
         int maxlength = 0;
         int maxlengthTemp = 0;
-
+        // 左向右遍历
         for (int i = 0; i < dataSize; ++i) {
             if (data[i] == '(') {
                 left++;
@@ -84,6 +84,7 @@ public:
                 right = 0;
             }
         }
+        // 右向左遍历
         right = left = maxlengthTemp = 0;
         for (int i = dataSize - 1; i >= 0; --i) {
             if (data[i] == ')') {

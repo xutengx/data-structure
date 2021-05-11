@@ -40,3 +40,5 @@ add_executable(239-sliding-window-maximum leetcode/editor/cn/239-sliding-window-
 add_executable(70-climbing-stairs leetcode/editor/cn/70-climbing-stairs.cpp)
 add_executable(69-sqrtx leetcode/editor/cn/69-sqrtx.cpp)
 add_executable(344-reverse-string leetcode/editor/cn/344-reverse-string.cpp)
+add_executable(151-reverse-words-in-a-string leetcode/editor/cn/151-reverse-words-in-a-string.cpp)
+add_executable(226-invert-binary-tree leetcode/editor/cn/226-invert-binary-tree.cpp)

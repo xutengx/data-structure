@@ -45,3 +45,4 @@ add_executable(226-invert-binary-tree leetcode/editor/cn/226-invert-binary-tree.
 add_executable(98-validate-binary-search-tree leetcode/editor/cn/98-validate-binary-search-tree.cpp)
 add_executable(112-path-sum leetcode/editor/cn/112-path-sum.cpp)
 add_executable(200-number-of-islands leetcode/editor/cn/200-number-of-islands.cpp)
+add_executable(36-valid-sudoku leetcode/editor/cn/36-valid-sudoku.cpp)

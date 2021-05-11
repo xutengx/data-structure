@@ -39,3 +39,4 @@ add_executable(641-design-circular-deque leetcode/editor/cn/641-design-circular-
 add_executable(239-sliding-window-maximum leetcode/editor/cn/239-sliding-window-maximum.cpp)
 add_executable(70-climbing-stairs leetcode/editor/cn/70-climbing-stairs.cpp)
 add_executable(69-sqrtx leetcode/editor/cn/69-sqrtx.cpp)
+add_executable(344-reverse-string leetcode/editor/cn/344-reverse-string.cpp)

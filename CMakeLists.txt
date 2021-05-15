@@ -48,3 +48,4 @@ add_executable(200-number-of-islands leetcode/editor/cn/200-number-of-islands.cp
 add_executable(36-valid-sudoku leetcode/editor/cn/36-valid-sudoku.cpp)
 add_executable(64-minimum-path-sum leetcode/editor/cn/64-minimum-path-sum.cpp)
 add_executable(322-coin-change leetcode/editor/cn/322-coin-change.cpp)
+add_executable(121-best-time-to-buy-and-sell-stock leetcode/editor/cn/121-best-time-to-buy-and-sell-stock.cpp)

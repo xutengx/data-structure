@@ -52,3 +52,5 @@ add_executable(121-best-time-to-buy-and-sell-stock leetcode/editor/cn/121-best-t
 add_executable(122-best-time-to-buy-and-sell-stock-ii leetcode/editor/cn/122-best-time-to-buy-and-sell-stock-ii.cpp)
 add_executable(123-best-time-to-buy-and-sell-stock-iii leetcode/editor/cn/123-best-time-to-buy-and-sell-stock-iii.cpp)
 add_executable(993-cousins-in-binary-tree leetcode/editor/cn/993-cousins-in-binary-tree.cpp)
+add_executable(188-best-time-to-buy-and-sell-stock-iv leetcode/editor/cn/188-best-time-to-buy-and-sell-stock-iv.cpp)
+add_executable(206-reverse-linked-list leetcode/editor/cn/206-reverse-linked-list.cpp)

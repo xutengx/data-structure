@@ -56,3 +56,4 @@ add_executable(188-best-time-to-buy-and-sell-stock-iv leetcode/editor/cn/188-bes
 add_executable(206-reverse-linked-list leetcode/editor/cn/206-reverse-linked-list.cpp)
 add_executable(225-implement-stack-using-queues leetcode/editor/cn/225-implement-stack-using-queues.cpp)
 add_executable(509-fibonacci-number leetcode/editor/cn/509-fibonacci-number.cpp)
+add_executable(495-teemo-attacking leetcode/editor/cn/495-teemo-attacking.cpp)

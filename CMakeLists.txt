@@ -58,3 +58,4 @@ add_executable(225-implement-stack-using-queues leetcode/editor/cn/225-implement
 add_executable(509-fibonacci-number leetcode/editor/cn/509-fibonacci-number.cpp)
 add_executable(495-teemo-attacking leetcode/editor/cn/495-teemo-attacking.cpp)
 add_executable(530-minimum-absolute-difference-in-bst leetcode/editor/cn/530-minimum-absolute-difference-in-bst.cpp)
+add_executable(559-maximum-depth-of-n-ary-tree leetcode/editor/cn/559-maximum-depth-of-n-ary-tree.cpp)

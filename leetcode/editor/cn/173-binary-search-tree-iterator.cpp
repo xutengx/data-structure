@@ -97,17 +97,17 @@ public:
         // 中序遍历，转成链表
         inOrder2Linked(root);
         // 重置指针
-        linkedNow = linkedRoot;
+        TreeNodeNow = TreeNodeRoot;
     }
 
     int next() {
-        int i = linkedNow->next->val;
-        linkedNow = linkedNow->next;
-        return i;
+        int val = TreeNodeNow->left->val;
+        TreeNodeNow = TreeNodeNow->left;
+        return val;
     }
 
     bool hasNext() {
-        return linkedNow->next != nullptr;
+        return TreeNodeNow->left != nullptr;
     }
 
 private:
@@ -116,8 +116,8 @@ private:
         LinkedNode *next = nullptr;
     };
 
-    LinkedNode *linkedRoot = new LinkedNode;
-    LinkedNode *linkedNow = linkedRoot;
+    TreeNode * TreeNodeRoot = new TreeNode;
+    TreeNode * TreeNodeNow = TreeNodeRoot;
 
     /**
      * 中序遍历，转成链表
@@ -128,13 +128,14 @@ private:
             return;
         }
         inOrder2Linked(root->left);
-        //
-        auto n = new LinkedNode;
-        n->val = root->val;
-        linkedNow->next = n;
-        linkedNow = linkedNow->next;
+        // 复用左子树为单向链表
+        TreeNodeNow->left = root;
+        TreeNodeNow = TreeNodeNow->left;
+        root->left = nullptr;
         //
         inOrder2Linked(root->right);
+
+
     }
 };
 

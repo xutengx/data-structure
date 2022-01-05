@@ -63,3 +63,4 @@ add_executable(21-merge-two-sorted-lists leetcode/editor/cn/21-merge-two-sorted-
 add_executable(12-integer-to-roman leetcode/editor/cn/12-integer-to-roman.cpp)
 add_executable(173-binary-search-tree-iterator leetcode/editor/cn/173-binary-search-tree-iterator.cpp)
 add_executable(143-reorder-list leetcode/editor/cn/143-reorder-list.cpp)
+add_executable(146-lru-cache leetcode/editor/cn/146-lru-cache.cpp)

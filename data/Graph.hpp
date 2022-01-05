@@ -45,6 +45,7 @@ public:
     virtual ~Graph() = default;
 
     /**
+     * 邻接表存储方法
      * 增加一边, one -> two
      * @param one
      * @param two
@@ -75,6 +76,7 @@ public:
     }
 
     /**
+     * 邻接表存储方法
      * 删除一边 one -> two
      * @param one
      * @param two

@@ -68,3 +68,4 @@ add_executable(147-insertion-sort-list leetcode/editor/cn/147-insertion-sort-lis
 add_executable(148-sort-list leetcode/editor/cn/148-sort-list.cpp)
 add_executable(328-odd-even-linked-list leetcode/editor/cn/328-odd-even-linked-list.cpp)
 add_executable(13-roman-to-integer leetcode/editor/cn/13-roman-to-integer.cpp)
+add_executable(14-longest-common-prefix leetcode/editor/cn/14-longest-common-prefix.cpp)

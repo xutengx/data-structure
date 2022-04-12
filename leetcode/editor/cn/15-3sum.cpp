@@ -38,6 +38,7 @@
 // 👍 3313 👎 0
 
 
+#include <algorithm>
 #include "iostream"
 #include "cassert"
 #include "vector"
